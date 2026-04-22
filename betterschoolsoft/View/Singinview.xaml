@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="betterschoolsoft.View.Singinview"
+             Title="Singinview">
+
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10"  WidthRequest="250">
+
+        <Label x:Name="SigninLabel" WidthRequest="250" FontSize="20"/>
+        <Entry x:Name="UsernameEntry" Placeholder="Username" WidthRequest="250"/>
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" WidthRequest="250"/>
+        <Button Text="Spara konto" Command="SaveSigninbtn_Clicked"  WidthRequest="250"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

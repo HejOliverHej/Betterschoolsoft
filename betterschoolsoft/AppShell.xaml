@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="betterschoolsoft.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:betterschoolsoft.View"
+    Title="betterschoolsoft">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:LoginView}"
+        Route="LoginView" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:SigninView}"
+        Route="SigninView" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
+        Route="ClassManagementTeacherView" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:ScheduleEditorView}"
+        Route="ScheduleEditorView" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:StudentScheduleView}"
+        Route="StudentScheduleView" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:TeacherDashboardView}"
+        Route="TeacherDashboardView" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:StudentDashboardView}"
+        Route="StudentDashboardView" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate View:scheduleEditorTeacherView}"
+        Route="LoginView" />
+
+</Shell>

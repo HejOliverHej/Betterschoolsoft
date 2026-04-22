@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="betterschoolsoft.View.LoginView"
+             Title="Login">
+    
+    
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10"  WidthRequest="250">
+
+        <Label x:Name="loginLabel" WidthRequest="250" FontSize="20"/>
+        <Entry x:Name="UsernameEntry" Placeholder="Username" WidthRequest="250"/>
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" WidthRequest="250"/>
+        <Button Text="Logga in" Command="Logginbtn_Clicked"  WidthRequest="250"/>
+        <Button Text="Inget konto, gör ett här!" Command="SignInbtn" WidthRequest="250"/>
+
+    </VerticalStackLayout>
+</ContentPage>
