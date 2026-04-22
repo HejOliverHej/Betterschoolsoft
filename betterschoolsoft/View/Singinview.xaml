@@ -4,14 +4,37 @@
              x:Class="betterschoolsoft.View.Singinview"
              Title="Singinview">
 
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" WidthRequest="250">
 
-    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10"  WidthRequest="250">
+        <Label Text="Skapa konto" FontSize="20"/>
 
-        <Label x:Name="SigninLabel" WidthRequest="250" FontSize="20"/>
-        <Entry x:Name="UsernameEntry" Placeholder="Username" WidthRequest="250"/>
-        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" WidthRequest="250"/>
-        <Button Text="Spara konto" Command="SaveSigninbtn_Clicked"  WidthRequest="250"/>
+        <Entry Placeholder="Username"
+           Text="{Binding Username}" />
+
+        <Entry Placeholder="Password"
+           IsPassword="True"
+           Text="{Binding Password}" />
+
+        <Entry Placeholder="Confirm Password"
+           IsPassword="True"
+           Text="{Binding ConfirmPassword}" />
+
+        <!-- Rollval -->
+        <Label Text="Välj roll:" />
+
+        <RadioButton Content="Student"
+                 GroupName="role"
+                 IsChecked="{Binding IsStudent}" />
+
+        <RadioButton Content="Teacher"
+                 GroupName="role"
+                 IsChecked="{Binding IsTeacher}" />
+
+        <Button Text="Spara konto"
+            Command="{Binding SignUpCommand}" />
+
+        <Label Text="{Binding Message}" TextColor="Red"/>
 
     </VerticalStackLayout>
-    
+
 </ContentPage>
