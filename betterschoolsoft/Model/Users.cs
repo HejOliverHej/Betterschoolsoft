@@ -4,13 +4,13 @@ using System.Text;
 
 namespace betterschoolsoft.Model
 {
-    abstract class Users
+    public class User
     {
+        public int Id { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
-        private int id;
-        private string username = string.Empty;
-        private string password = string.Empty;
-        public enum UserRoll {Student, Teacher}
+        public string Role { get; set; } = string.Empty;
 
 
         protected Users(int id, string username, string password)
