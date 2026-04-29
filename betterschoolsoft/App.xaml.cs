@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using betterschoolsoft.View;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace betterschoolsoft
 {
@@ -7,11 +8,20 @@ namespace betterschoolsoft
         public App()
         {
             InitializeComponent();
+            MainPage = new StudentDashboardView();
+
+
+
+
+
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+      //  protected override Window CreateWindow(IActivationState? activationState)
+      //  {
+      //      return new Window(new AppShell());
+     //   }
+       
+
+
     }
 }

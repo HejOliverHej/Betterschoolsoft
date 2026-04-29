@@ -7,7 +7,7 @@ public partial class StudentDashboardView : ContentPage
 	public StudentDashboardView()
 	{
 		InitializeComponent();
-		BindingContext = new StudentDashboardViewModel();
+        BindingContext = new StudentDashboardViewModel();
 
     }
 }

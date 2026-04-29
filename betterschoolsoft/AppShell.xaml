@@ -6,44 +6,47 @@
     xmlns:View="clr-namespace:betterschoolsoft.View"
     Title="betterschoolsoft">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:LoginView}"
-        Route="LoginView" />
-    
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:SigninView}"
-        Route="SigninView" />
-    
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
-        Route="ClassManagementTeacherView" />
-    
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:ScheduleEditorView}"
-        Route="ScheduleEditorView" />
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:StudentScheduleView}"
-        Route="StudentScheduleView" />
-    
+        Route="LoginView"
+        ContentTemplate="{DataTemplate View:LoginView}" />
+
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:TeacherDashboardView}"
-        Route="TeacherDashboardView" />
-    
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:StudentDashboardView}"
-        Route="StudentDashboardView" />
-    
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate View:scheduleEditorTeacherView}"
-        Route="LoginView" />
+        Route="SignupView"
+        ContentTemplate="{DataTemplate View:Singinview}" />
+
+    <TabBar Route="StudentSection">
+        <ShellContent
+            Title="Dashboard"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate View:StudentDashboardView}"
+            Route="StudentDashboardView" />
+
+        <ShellContent
+            Title="Schema"
+            Icon="calendar.png"
+            ContentTemplate="{DataTemplate View:StudentScheduleView}"
+            Route="StudentScheduleView" />
+    </TabBar>
+
+    <TabBar Route="TeacherSection">
+        <ShellContent
+            Title="Dashboard"
+            Icon="teacher.png"
+            ContentTemplate="{DataTemplate View:TeacherDashboardView}"
+            Route="TeacherDashboardView" />
+
+        <ShellContent
+            Title="Klasser"
+            Icon="class.png"
+            ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
+            Route="ClassManagementTeacherView" />
+
+        <ShellContent
+            Title="Schemaeditor"
+            Icon="edit.png"
+            ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
+            Route="ScheduleEditorTeacherView" />
+    </TabBar>
 
 </Shell>

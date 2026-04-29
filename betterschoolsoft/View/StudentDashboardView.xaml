@@ -2,11 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="betterschoolsoft.View.StudentDashboardView"
-             Title="Main">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Dashboard"
+             >
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <VerticalStackLayout>
+        <Label Text="Välkommen," 
+                       FontSize="18"
+                       TextColor="Gray"/>
+        <Label Text="{Binding StudentName}"
+                       FontSize="28"
+                       FontAttributes="Bold"/>
     </VerticalStackLayout>
+    
+    <HorizontalStackLayout Spacing="15">
+        <Button Text="Schema"
+                        Command="{Binding OpenScheduleCommand}"
+                        WidthRequest="120"/>
+        <Button Text="Frånvaro"
+                        Command="{Binding OpenAbsenceCommand}"
+                        WidthRequest="120"/>
+        <Button Text="Meddelanden"
+                        Command="{Binding OpenMessagesCommand}"
+                        WidthRequest="120"/>
+    </HorizontalStackLayout>
+
+    <Label Text="Dagens lektioner"
+                   FontSize="22"
+                   FontAttributes="Bold"/>
+
+    <CollectionView ItemsSource="{Binding TodayLessons}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Padding="15" Margin="0,5" BorderColor="#cccccc">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Subject}" 
+                                       FontSize="20"
+                                       FontAttributes="Bold"/>
+                        <Label Text="{Binding Teacher}" 
+                                       FontSize="14"
+                                       TextColor="Gray"/>
+                                <Label Text="{Binding StartTime}"
+                                FontSize="14"/>
+                        <Label Text="{Binding Classroom}" 
+                                       FontSize="14"/>
+                                <Label Text="{Binding EndTime}" FontSize="14"/>
+
+                            </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+    </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
+
