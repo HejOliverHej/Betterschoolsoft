@@ -10,8 +10,8 @@
         <Label x:Name="loginLabel" WidthRequest="250" FontSize="20"/>
         <Entry x:Name="UsernameEntry" Placeholder="Username" WidthRequest="250"/>
         <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" WidthRequest="250"/>
-        <Button Text="Logga in" Command="Logginbtn_Clicked"  WidthRequest="250"/>
-        <Button Text="Inget konto, gör ett här!" Command="SignInbtn" WidthRequest="250"/>
+        <Button Text="Logga in" Clicked="Logginbtn_Clicked"  WidthRequest="250"/>
+        <Button Text="Inget konto, gör ett här!" Clicked="SignInbtn_Clicked" WidthRequest="250"/>
 
     </VerticalStackLayout>
 </ContentPage>

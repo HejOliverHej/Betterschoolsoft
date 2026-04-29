@@ -4,13 +4,14 @@ using System.Text;
 
 namespace betterschoolsoft.Model
 {
-    internal class Students : Users
+    internal class Students : User
     {
 
         private string classid = string.Empty;
         public Students(int id, string username, string password, string classid)
-            : base(id, username, password)
+    : base(username, password, "Student")
         {
+            Id = id;
             Classid = classid;
         }
 

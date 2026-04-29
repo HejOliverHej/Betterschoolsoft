@@ -1,27 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace betterschoolsoft.Model
 {
-    internal class Teachers : Users
+    internal class Teachers : User
     {
+        public List<string> Subjects { get; set; } = new List<string>();
 
-        private List<string> subjects = new List<string>();
         public Teachers(int id, string username, string password, string subjects)
-            : base(id, username, password)
+            : base(username, password, "Teacher")
         {
-            Subjects = subjects.Split(',').ToList();;
+            Id = id;
+            Subjects = subjects.Split(',').ToList();
         }
-
-
-        public List<string> Subjects
-        {
-            get { return subjects; }
-
-            set { subjects = value; }
-        }
-
     }
 }

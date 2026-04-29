@@ -96,11 +96,11 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Users/edvin.nyholm/source/repos/BetterschoolsoftBetter/betterschoolsoft/View/Singinview.xaml]
+[C:/Users/edvin.nyholm/source/repos/BetterschoolsoftBetter/betterschoolsoft/View/Signinview.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.Singinview.xaml
-build_metadata.AdditionalFiles.TargetPath = View\Singinview.xaml
-build_metadata.AdditionalFiles.RelativePath = View\Singinview.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.Signinview.xaml
+build_metadata.AdditionalFiles.TargetPath = View\Signinview.xaml
+build_metadata.AdditionalFiles.RelativePath = View\Signinview.xaml
 build_metadata.AdditionalFiles.Inflator = SourceGen
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 

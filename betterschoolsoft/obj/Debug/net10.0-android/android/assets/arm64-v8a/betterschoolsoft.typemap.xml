@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="betterschoolsoft" mvid="02125c149abd407e8d9fd168840cccfd">
+  <java-to-managed>
+    <entry java-name="crc642029342a8e8255b5/MainActivity" managed-name="betterschoolsoft.MainActivity, betterschoolsoft" managed-type-token-id="33554440" />
+    <entry java-name="crc642029342a8e8255b5/MainApplication" managed-name="betterschoolsoft.MainApplication, betterschoolsoft" managed-type-token-id="33554441" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc642029342a8e8255b5/MainActivity" managed-name="betterschoolsoft.MainActivity, betterschoolsoft" managed-type-token-id="33554440" />
+    <entry java-name="crc642029342a8e8255b5/MainApplication" managed-name="betterschoolsoft.MainApplication, betterschoolsoft" managed-type-token-id="33554441" />
+  </managed-to-java>
+</api>

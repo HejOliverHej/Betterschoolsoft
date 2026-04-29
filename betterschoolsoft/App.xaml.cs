@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using betterschoolsoft.View;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace betterschoolsoft
 {

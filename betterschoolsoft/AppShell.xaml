@@ -23,8 +23,8 @@
     
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate View:ScheduleEditorView}"
-        Route="ScheduleEditorView" />
+        ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
+        Route="ScheduleEditorTeacherView" />
 
     <ShellContent
         Title="Home"
@@ -43,7 +43,7 @@
     
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate View:scheduleEditorTeacherView}"
+        ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
         Route="LoginView" />
 
 </Shell>
