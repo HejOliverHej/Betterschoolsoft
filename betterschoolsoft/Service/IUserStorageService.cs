@@ -1,10 +1,14 @@
-﻿using System;
+﻿using betterschoolsoft.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace betterschoolsoft.Service
 {
-    internal class IUserStorageService
+    public interface IUserStorageService
     {
+        Task SaveAsync(IEnumerable<Users> users);
+        Task<IList<Users>> LoadAsync();
     }
 }
+

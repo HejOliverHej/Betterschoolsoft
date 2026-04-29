@@ -8,7 +8,7 @@ namespace betterschoolsoft
         public App()
         {
             InitializeComponent();
-            MainPage = new StudentDashboardView();
+            MainPage = new AppShell();
 
 
 

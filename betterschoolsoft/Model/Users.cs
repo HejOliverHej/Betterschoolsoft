@@ -5,7 +5,7 @@ using static betterschoolsoft.Model.Users;
 
 namespace betterschoolsoft.Model
 {
-    abstract class Users
+    public abstract class Users
     {
 
         private int id;
@@ -13,7 +13,7 @@ namespace betterschoolsoft.Model
         private string password = string.Empty;
         public enum UserRole {Student, Teacher}
 
-        public UserRole role;
+        private UserRole role;
 
 
 

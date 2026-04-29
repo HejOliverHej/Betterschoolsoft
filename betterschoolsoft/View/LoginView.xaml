@@ -5,5 +5,40 @@
              Title="Logins"
              >
 
-    <Label Text="HEj" />
-</ContentPage>
+  
+        <ScrollView>
+            <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+
+                <Label Text="Better SchoolSoft"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+                <Entry Placeholder="Användarnamn"
+                   Text="{Binding Username}"
+                   FontSize="18"
+                    />
+
+                <Entry Placeholder="Lösenord"
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   FontSize="18"
+                   />
+
+                <Button Text="Logga in"
+                    Command="{Binding LoginCommand}"
+                    BackgroundColor="#4A90E2"
+                    TextColor="White"
+                    CornerRadius="8"
+                    FontSize="18"
+                    HeightRequest="50" />
+
+                <Label Text="Har du inget konto? Registrera dig"
+                   TextColor="#4A90E2"
+                   HorizontalOptions="Center">
+                    
+                </Label>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
