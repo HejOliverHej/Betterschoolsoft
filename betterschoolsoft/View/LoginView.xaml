@@ -33,12 +33,14 @@
                     FontSize="18"
                     HeightRequest="50" />
 
-                <Label Text="Har du inget konto? Registrera dig"
-                   TextColor="#4A90E2"
-                   HorizontalOptions="Center">
-                    
-                </Label>
+            <Button Text="inget konto gör ett här"
+                Command="{Binding GoToSignupCommand}"
+                BackgroundColor="#4A90E2"
+                TextColor="White"
+                CornerRadius="8"
+                FontSize="18"
+                HeightRequest="50" />
 
-            </VerticalStackLayout>
+        </VerticalStackLayout>
         </ScrollView>
     </ContentPage>

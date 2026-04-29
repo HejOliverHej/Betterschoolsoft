@@ -46,7 +46,8 @@ namespace betterschoolsoft.ViewModel
             LoginCommand = new Command(async () => await Login());
             GoToSignupCommand = new Command(async () =>
             {
-                await Shell.Current.GoToAsync("SignupView");
+                await Shell.Current.GoToAsync("//SignupView");
+
             });
         }
 
