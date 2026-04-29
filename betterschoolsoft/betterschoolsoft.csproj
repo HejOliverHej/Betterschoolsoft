@@ -113,6 +113,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="NewFolder\" />
 	  <Folder Include="Service\" />
 	</ItemGroup>
 

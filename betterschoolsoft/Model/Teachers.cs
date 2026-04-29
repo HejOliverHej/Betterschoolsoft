@@ -9,8 +9,8 @@ namespace betterschoolsoft.Model
     {
 
         private List<string> subjects = new List<string>();
-        public Teachers(int id, string username, string password, string subjects)
-            : base(id, username, password)
+        public Teachers(int id, string username, string password, string subjects, UserRole role)
+            : base(id, username, password, role)
         {
             Subjects = subjects.Split(',').ToList();;
         }
