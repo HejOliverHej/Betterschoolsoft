@@ -108,6 +108,16 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentAbsenceView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentAbsenceView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\StudentAbsenceView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\StudentAbsenceView.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentDashboardView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentDashboardView.xaml
@@ -123,6 +133,16 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentManagementTeacherView.xaml
 build_metadata.AdditionalFiles.TargetPath = View\StudentManagementTeacherView.xaml
 build_metadata.AdditionalFiles.RelativePath = View\StudentManagementTeacherView.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentMessagesView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentMessagesView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\StudentMessagesView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\StudentMessagesView.xaml
 build_metadata.AdditionalFiles.Inflator = SourceGen
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 

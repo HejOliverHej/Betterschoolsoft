@@ -53,20 +53,8 @@ namespace betterschoolsoft.ViewModel
                 )
             };
 
-            OpenScheduleCommand = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("StudentScheduleView");
-            });
+            
 
-            OpenAbsenceCommand = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("AbsenceView");
-            });
-
-            OpenMessagesCommand = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("MessagesView");
-            });
         }
 
     }

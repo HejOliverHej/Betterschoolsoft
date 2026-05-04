@@ -3,10 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="betterschoolsoft.View.TeacherDashboardView"
              Title="TeacherDashboardView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <Label Text="{Binding TeacherName}"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+                        <Label Text="Dagens lektioner"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,0" />
+
+            <CollectionView ItemsSource="{Binding TodayLessons}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="15"
+                               Margin="0,10"
+                               >
+
+                            <VerticalStackLayout>
+
+                                <Label Text="{Binding Subject}"
+                                       FontSize="18"
+                                       FontAttributes="Bold" />
+
+                                <Label Text="{Binding ClassRoom, StringFormat='Sal: {0}'}"
+                                       FontSize="14" />
+
+                                <Label Text="{Binding StartTime, StringFormat='Start: {0}'}"
+                                       FontSize="14" />
+
+                                <Label Text="{Binding EndTime, StringFormat='Slut: {0}'}"
+                                       FontSize="14" />
+
+                            </VerticalStackLayout>
+
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
