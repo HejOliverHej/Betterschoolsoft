@@ -7,12 +7,29 @@
     Title="betterschoolsoft">
 
 
-    
-
-
+    <TabBar Route="AdminSection">
+        <ShellContent
+            Title="Dashboard"
    
+            ContentTemplate="{DataTemplate View:AdminView}"
+            Route="TeacherDashboardView" />
 
-    
+        <ShellContent
+                Title="Schemaeditor"
+   
+                ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
+                Route="ScheduleEditorTeacherView" />
+
+        <ShellContent
+            Title="Message"
+   
+            ContentTemplate="{DataTemplate View:AdminMessageView}"
+            Route="AdminMessageView" />
+    </TabBar>
+
+
+
+
 
     <TabBar Route="TeacherSection">
         <ShellContent
@@ -34,19 +51,7 @@
             Route="ScheduleEditorTeacherView" />
     </TabBar>
 
-    <TabBar Route="AdminSection">
-        <ShellContent
-        Title="Dashboard"
-       
-        ContentTemplate="{DataTemplate View:AdminDashboardView}"
-        Route="TeacherDashboardView" />
-
-        <ShellContent
-        Title="Schemaeditor"
-       
-        ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
-        Route="ScheduleEditorTeacherView" />
-    </TabBar>
+    
 
     <ShellContent
      Route="LoginView"
@@ -55,31 +60,33 @@
     <ShellContent
      Route="SignupView"
      ContentTemplate="{DataTemplate View:Singinview}" />
+    
+    
 
     <TabBar Route="StudentSection">
-        <ShellContent
-    Title="Dashboard"
-    Icon="home.png"
-    ContentTemplate="{DataTemplate View:StudentDashboardView}"
-    Route="StudentDashboardView" />
+                <ShellContent
+            Title="Dashboard"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate View:StudentDashboardView}"
+            Route="StudentDashboardView" />
 
-        <ShellContent
-    Title="Schema"
-    Icon="calendar.png"
-    ContentTemplate="{DataTemplate View:StudentScheduleView}"
-    Route="StudentScheduleView" />
+                <ShellContent
+            Title="Schema"
+            Icon="calendar.png"
+            ContentTemplate="{DataTemplate View:StudentScheduleView}"
+            Route="StudentScheduleView" />
 
-        <ShellContent
-    Title="Frånvaro"
+                <ShellContent
+            Title="Frånvaro"
    
-    ContentTemplate="{DataTemplate View:StudentAbsenceView}"
-    Route="StudentAbsenceView" />
+            ContentTemplate="{DataTemplate View:StudentAbsenceView}"
+            Route="StudentAbsenceView" />
 
 
-        <ShellContent
-        Title="Meddelanden"
-        ContentTemplate="{DataTemplate View:StudentMessagesView}"
-        Route="StudentMessagesView" />
+                <ShellContent
+                Title="Meddelanden"
+                ContentTemplate="{DataTemplate View:StudentMessagesView}"
+                Route="StudentMessagesView" />
     </TabBar>
 
 </Shell>
