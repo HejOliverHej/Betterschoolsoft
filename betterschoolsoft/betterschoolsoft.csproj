@@ -86,6 +86,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\AdminScheduleEditorView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\ClassManagementTeacherView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
