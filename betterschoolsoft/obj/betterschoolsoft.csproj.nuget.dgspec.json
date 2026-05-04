@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oliver.bafverholm\\source\\repos\\betterschoolsoft\\betterschoolsoft\\betterschoolsoft.csproj": {}
+    "C:\\Users\\edvin.nyholm\\source\\repos\\BetterschoolsoftBetter\\betterschoolsoft\\betterschoolsoft.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oliver.bafverholm\\source\\repos\\betterschoolsoft\\betterschoolsoft\\betterschoolsoft.csproj": {
+    "C:\\Users\\edvin.nyholm\\source\\repos\\BetterschoolsoftBetter\\betterschoolsoft\\betterschoolsoft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oliver.bafverholm\\source\\repos\\betterschoolsoft\\betterschoolsoft\\betterschoolsoft.csproj",
+        "projectUniqueName": "C:\\Users\\edvin.nyholm\\source\\repos\\BetterschoolsoftBetter\\betterschoolsoft\\betterschoolsoft.csproj",
         "projectName": "betterschoolsoft",
-        "projectPath": "C:\\Users\\oliver.bafverholm\\source\\repos\\betterschoolsoft\\betterschoolsoft\\betterschoolsoft.csproj",
-        "packagesPath": "C:\\Users\\oliver.bafverholm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oliver.bafverholm\\source\\repos\\betterschoolsoft\\betterschoolsoft\\obj\\",
+        "projectPath": "C:\\Users\\edvin.nyholm\\source\\repos\\BetterschoolsoftBetter\\betterschoolsoft\\betterschoolsoft.csproj",
+        "packagesPath": "C:\\Users\\edvin.nyholm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edvin.nyholm\\source\\repos\\BetterschoolsoftBetter\\betterschoolsoft\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\oliver.bafverholm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\edvin.nyholm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
