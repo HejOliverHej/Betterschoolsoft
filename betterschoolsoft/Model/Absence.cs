@@ -7,50 +7,74 @@ namespace betterschoolsoft.Model
     internal class Absence
     {
 
-        private int id;
-        private int studentid;
-        private int lessonid;
-        private DateTime date;
-        private int amount;
+            public Guid Id { get; private set; } = Guid.NewGuid();
 
-        public Absence(int id, int studentid, int lessonid, DateTime date, int amount)
-        {
-            Id = id;
-            Studentid = studentid;
-            Lessonid = lessonid;
-            Date = date;
-            Amount = amount;
-        }
+            private Students student;
+            private Lesson lesson;
+            private DateTime date;
+            private int minutes;
 
-        public int Id
-        {
-            get { return id; }
+            public Absence(Students student, Lesson lesson, DateTime date, int minutes)
+            {
+                Student = student;
+                Lesson = lesson;
+                Date = date;
+                Minutes = minutes;
+            }
 
-            set { id = value; }
-        }
-        public int Amount
-        {
-            get { return amount; }
+            public Students Student
+            {
+                get => student;
+                set
+                {
+                    if (value == null)
+                        throw new ArgumentException("Student cannot be null.");
 
-            set { amount = value; }
-        }
-        public DateTime Date
-        {
-            get { return date; }
+                    student = value;
+                }
+            }
 
-            set { date = value; }
-        }
-        public int Studentid
-        {
-            get { return studentid; }
+            public Lesson Lesson
+            {
+                get => lesson;
+                set
+                {
+                    if (value == null)
+                        throw new ArgumentException("Lesson cannot be null.");
 
-            set { studentid = value; }
-        }
-        public int Lessonid
-        {
-            get { return lessonid; }
+                    lesson = value;
+                }
+            }
 
-            set { lessonid = value; }
-        }
+            public DateTime Date
+            {
+                get => date;
+                set
+                {
+                    if (value == default)
+                        throw new ArgumentException("Date cannot be empty.");
+
+                    date = value;
+                }
+            }
+
+            public int Minutes
+            {
+                get => minutes;
+                set
+                {
+                    if (value < 1)
+                        throw new ArgumentException("Absence minutes must be at least 1.");
+
+                    if (value > 600)
+                        throw new ArgumentException("Absence minutes cannot exceed 600 (10 hours).");
+
+                    minutes = value;
+                }
+            }
     }
 }
+
+
+
+

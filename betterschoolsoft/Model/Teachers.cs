@@ -8,21 +8,44 @@ namespace betterschoolsoft.Model
     internal class Teachers : Users
     {
 
-        private List<string> subjects = new List<string>();
-        public Teachers() { } 
-        public Teachers(int id, string username, string password, string subjects)
-            : base(id, username, password)
+        private List<Subject> subjects = new List<Subject>();
+
+        public Teachers(string username, string password)
+            : base(username, password)
         {
-            Subjects = subjects.Split(',').ToList();;
         }
 
-
-        public List<string> Subjects
+        public Teachers(string username, string password, List<Subject> subjects)
+            : base(username, password)
         {
-            get { return subjects; }
-
-            set { subjects = value; }
+            Subjects = subjects;
         }
 
+        public List<Subject> Subjects
+        {
+            get => subjects;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Subjects list cannot be null.");
+
+                subjects = value;
+            }
+        }
+
+        public void AddSubject(Subject subject)
+        {
+            if (subject == null)
+                throw new ArgumentException("Subject cannot be null.");
+
+            subjects.Add(subject);
+        }
+
+        public void RemoveSubject(Subject subject)
+        {
+            subjects.Remove(subject);
+
+
+        }
     }
 }

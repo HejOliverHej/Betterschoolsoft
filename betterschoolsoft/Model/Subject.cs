@@ -7,26 +7,29 @@ namespace betterschoolsoft.Model
     internal class Subject
     {
 
-        private int id;
+        public Guid Id { get; private set; } = Guid.NewGuid();
+
         private string name = string.Empty;
 
-        public Subject(int id, string name, string classteacher)
+        public Subject(string name)
         {
-            Id = id;
             Name = name;
         }
 
-        public int Id
-        {
-            get { return id; }
-
-            set { id = value; }
-        }
         public string Name
         {
-            get { return name; }
+            get => name;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Subject name cannot be empty.");
 
-            set { name = value; }
+                if (value.Length < 2)
+                    throw new ArgumentException("Subject name must be at least 2 characters.");
+
+                name = value;
+
+            }
         }
     }
 }

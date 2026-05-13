@@ -8,69 +8,106 @@ namespace betterschoolsoft.Model
     internal class Lesson
     {
 
-        private int id;
+        public Guid Id { get; private set; } = Guid.NewGuid();
+
         private Subject subject;
-        private string teacher = string.Empty;
-        private string classRoom = string.Empty;
-        private string startTime = string.Empty;
-        private string endTime = string.Empty;
-        private string weekday = string.Empty;
-        private string classid = string.Empty;
+        private Teachers teacher;
+        private ClassGroup classGroup;
 
-        public Lesson(int id, string teacher, string classRoom, string startTime, string endTime, string weekday, string classid)
+        private string room = string.Empty;
+        private DayOfWeek weekday;
+        private TimeSpan startTime;
+        private TimeSpan endTime;
+
+        public Lesson(Subject subject, Teachers teacher, ClassGroup classGroup,
+                      string room, DayOfWeek weekday, TimeSpan startTime, TimeSpan endTime)
         {
-            Id = id;
+            Subject = subject;
             Teacher = teacher;
-            ClassRoom = classRoom;
-            StartTime =  startTime;
-            EndTime = endTime;
+            ClassGroup = classGroup;
+            Room = room;
             Weekday = weekday;
-            Classid = classid;
+            StartTime = startTime;
+            EndTime = endTime;
         }
 
-        public int Id
+        public Subject Subject
         {
-            get { return id; }
+            get => subject;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Subject cannot be null.");
 
-            set { id = value; }
+                subject = value;
+            }
         }
-        public string Teacher
+
+        public Teachers Teacher
         {
-            get { return teacher; }
+            get => teacher;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Teacher cannot be null.");
 
-            set { teacher = value; }
+                teacher = value;
+            }
         }
-        public string ClassRoom
+
+        public ClassGroup ClassGroup
         {
-            get { return classRoom; }
+            get => classGroup;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("ClassGroup cannot be null.");
 
-            set { classRoom = value; }
+                classGroup = value;
+            }
         }
-        public string StartTime
+
+        public string Room
         {
-            get { return startTime; }
+            get => room;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Room cannot be empty.");
 
-            set { startTime = value; }
+                room = value;
+            }
         }
-        public string EndTime
+
+        public DayOfWeek Weekday
         {
-            get { return endTime; }
-
-            set { endTime = value; }
+            get => weekday;
+            set => weekday = value;
         }
-        public string Weekday
+
+        public TimeSpan StartTime
         {
-            get { return weekday; }
+            get => startTime;
+            set
+            {
+                if (value < TimeSpan.FromHours(6) || value > TimeSpan.FromHours(20))
+                    throw new ArgumentException("Start time must be between 06:00 and 20:00.");
 
-            set { weekday = value; }
+                startTime = value;
+            }
         }
-        public string Classid
+
+        public TimeSpan EndTime
         {
-            get { return classid; }
+            get => endTime;
+            set
+            {
+                if (value <= StartTime)
+                    throw new ArgumentException("End time must be after start time.");
 
-            set { classid = value; }
+                endTime = value;
+            }
         }
-
 
     }
 }

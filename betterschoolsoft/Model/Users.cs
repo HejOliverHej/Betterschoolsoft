@@ -7,39 +7,50 @@ namespace betterschoolsoft.Model
     abstract class Users
     {
 
-        private int id;
+        public Guid Id { get; set; } = Guid.NewGuid();
         private string username = string.Empty;
         private string password = string.Empty;
         public enum UserRoll {Student, Teacher}
 
-        public Users() { } 
+        
 
-        protected Users(int id, string username, string password)
+        protected Users(string username, string password)
         {
-            Id = id;
             Username = username;
             Password = password;
         }
 
 
-        public int Id
-        {
-            get { return id; }
-
-            set { id = value; }
-        }
-
         public string Username
         {
-            get { return username; }
+            get => username;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Username cannot be empty.");
 
-            set { username = value; }
+                if (value.Length < 3)
+                    throw new ArgumentException("Username must be at least 3 characters.");
+
+                username = value;
+            }
         }
+
         public string Password
         {
-            get { return password; }
+            get => password;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Password cannot be empty.");
 
-            set { password = value; }
+                if (value.Length < 6)
+                    throw new ArgumentException("Password must be at least 6 characters.");
+
+                password = value;
+            }
         }
+
+
     }
 }

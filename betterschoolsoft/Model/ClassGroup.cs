@@ -4,38 +4,71 @@ using System.Text;
 
 namespace betterschoolsoft.Model
 {
-    internal class Classes
+    internal class ClassGroup
     {
-        private int id;
+        public Guid Id { get; private set; } = Guid.NewGuid();
+
         private string name = string.Empty;
-        private string classteacher = string.Empty;
+        private Teachers classTeacher;
+        private List<Students> students = new List<Students>();
 
-        public Classes(int id, string name, string classteacher)
+        public ClassGroup(string name, Teachers classTeacher)
         {
-            Id = id;
             Name = name;
-            Classteacher = classteacher;
+            ClassTeacher = classTeacher;
         }
 
-        public int Id
-        {
-            get { return id; }
-
-            set { id = value; }
-        }
         public string Name
         {
-            get { return name; }
+            get => name;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Class name cannot be empty.");
 
-            set { name = value; }
+                if (value.Length < 2)
+                    throw new ArgumentException("Class name must be at least 2 characters.");
+
+                name = value;
+            }
         }
-        public string Classteacher
+
+        public Teachers ClassTeacher
         {
-            get { return classteacher; }
+            get => classTeacher;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Class teacher cannot be null.");
 
-            set { classteacher = value; }
+                classTeacher = value;
+            }
         }
 
+        public List<Students> Students
+        {
+            get => students;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Students list cannot be null.");
+
+                students = value;
+            }
+        }
+
+        public void AddStudent(Students student)
+        {
+            if (student == null)
+                throw new ArgumentException("Student cannot be null.");
+
+            students.Add(student);
+        }
+
+        public void RemoveStudent(Students student)
+        {
+            students.Remove(student);
+        }
 
 
     }

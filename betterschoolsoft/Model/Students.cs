@@ -7,22 +7,68 @@ namespace betterschoolsoft.Model
     internal class Students : Users
     {
 
-        private string classid = string.Empty;
+        private ClassGroup classGroup;
+        private List<Lesson> lessons = new List<Lesson>();
+        private List<Absence> absences = new List<Absence>();
 
-        public Students() { } 
-        public Students(int id, string username, string password, string classid)
-            : base(id, username, password)
+        public Students(string username, string password, ClassGroup classGroup)
+            : base(username, password)
         {
-            Classid = classid;
+            ClassGroup = classGroup;
         }
 
-
-        public string Classid
+        public ClassGroup ClassGroup
         {
-            get { return classid; }
+            get => classGroup;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("ClassGroup cannot be null.");
 
-            set { classid = value; }
+                classGroup = value;
+            }
         }
 
+        public List<Lesson> Lessons
+        {
+            get => lessons;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Lessons list cannot be null.");
+
+                lessons = value;
+            }
+        }
+
+        public List<Absence> Absences
+        {
+            get => absences;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentException("Absences list cannot be null.");
+
+                absences = value;
+            }
+        }
+
+        public void AddLesson(Lesson lesson)
+        {
+            if (lesson == null)
+                throw new ArgumentException("Lesson cannot be null.");
+
+            lessons.Add(lesson);
+        }
+
+        public void AddAbsence(Absence absence)
+        {
+            if (absence == null)
+                throw new ArgumentException("Absence cannot be null.");
+
+            absences.Add(absence);
+        }
     }
+
 }
+
