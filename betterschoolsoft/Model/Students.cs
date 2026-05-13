@@ -1,20 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace betterschoolsoft.Model
 {
-    internal class Students : Users
+    public class Students : Users
     {
-
         private ClassGroup classGroup;
-        private List<Lesson> lessons = new List<Lesson>();
-        private List<Absence> absences = new List<Absence>();
+        private List<Lesson> lessons;
+        private List<Absence> absences;
 
-        public Students(string username, string password, ClassGroup classGroup)
-            : base(username, password)
+        [JsonConstructor]
+        public Students(
+            Guid id,
+            string username,
+            string password,
+            ClassGroup classGroup,
+            List<Lesson> lessons,
+            List<Absence> absences)
+            : base(id, username, password)
         {
             ClassGroup = classGroup;
+            Lessons = lessons ?? new List<Lesson>();
+            Absences = absences ?? new List<Absence>();
+        }
+
+        public Students(string username, string password, ClassGroup classGroup)
+            : base(Guid.NewGuid(), username, password)
+        {
+            ClassGroup = classGroup;
+            Lessons = new List<Lesson>();
+            Absences = new List<Absence>();
         }
 
         public ClassGroup ClassGroup
@@ -24,7 +40,6 @@ namespace betterschoolsoft.Model
             {
                 if (value == null)
                     throw new ArgumentException("ClassGroup cannot be null.");
-
                 classGroup = value;
             }
         }
@@ -32,32 +47,19 @@ namespace betterschoolsoft.Model
         public List<Lesson> Lessons
         {
             get => lessons;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentException("Lessons list cannot be null.");
-
-                lessons = value;
-            }
+            set => lessons = value ?? new List<Lesson>();
         }
 
         public List<Absence> Absences
         {
             get => absences;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentException("Absences list cannot be null.");
-
-                absences = value;
-            }
+            set => absences = value ?? new List<Absence>();
         }
 
         public void AddLesson(Lesson lesson)
         {
             if (lesson == null)
                 throw new ArgumentException("Lesson cannot be null.");
-
             lessons.Add(lesson);
         }
 
@@ -65,10 +67,7 @@ namespace betterschoolsoft.Model
         {
             if (absence == null)
                 throw new ArgumentException("Absence cannot be null.");
-
             absences.Add(absence);
         }
     }
-
 }
-

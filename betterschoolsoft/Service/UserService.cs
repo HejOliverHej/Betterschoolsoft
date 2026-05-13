@@ -5,13 +5,12 @@ using System.Text.Json.Serialization.Metadata;
 
 namespace betterschoolsoft.Service
 {
-    internal class UserService
+    internal class JsonUserStorageService : IUserStorageService
     {
         private readonly string filePath;
-
         private readonly JsonSerializerOptions _options;
 
-        public UserService()
+        public JsonUserStorageService()
         {
             filePath = Path.Combine(FileSystem.AppDataDirectory, "users.json");
 
@@ -44,19 +43,19 @@ namespace betterschoolsoft.Service
             };
         }
 
-        public List<Users> GetUsers()
+        public async Task<IList<Users>> LoadAsync()
         {
             if (!File.Exists(filePath))
                 return new List<Users>();
 
-            var json = File.ReadAllText(filePath);
+            var json = await File.ReadAllTextAsync(filePath);
             return JsonSerializer.Deserialize<List<Users>>(json, _options) ?? new List<Users>();
         }
 
-        public void SaveUsers(List<Users> users)
+        public async Task SaveAsync(IEnumerable<Users> users)
         {
             var json = JsonSerializer.Serialize(users, _options);
-            File.WriteAllText(filePath, json);
+            await File.WriteAllTextAsync(filePath, json);
         }
     }
 }

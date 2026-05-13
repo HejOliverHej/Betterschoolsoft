@@ -12,12 +12,7 @@ namespace betterschoolsoft.ViewModel
 
         public StudentAbsenceViewModel()
         {
-            Absences = new ObservableCollection<Absence>
-            {
-                new Absence(1, 10, 2, DateTime.Now.AddDays(-1),5),
-                new Absence(2, 10, 3, DateTime.Now.AddDays(-3), 10),
-                new Absence(3, 10, 1, DateTime.Now.AddDays(-7), 20)
-            };
+            
         }
     }
 }

@@ -1,18 +1,15 @@
 ﻿using betterschoolsoft.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using betterschoolsoft.Service;
 using System.Windows.Input;
 
 namespace betterschoolsoft.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
-        /*
         private readonly LoginService _loginService;
 
-        private string _username;
-        private string _password;
+        private string _username = "";
+        private string _password = "";
 
         public string Username
         {
@@ -30,9 +27,7 @@ namespace betterschoolsoft.ViewModel
             set
             {
                 _password = value;
-
                 OnPropertyChanged(nameof(Password));
-
             }
         }
 
@@ -41,18 +36,25 @@ namespace betterschoolsoft.ViewModel
 
         public LoginViewModel()
         {
+
             _loginService = new LoginService(new JsonUserStorageService());
 
             LoginCommand = new Command(async () => await Login());
             GoToSignupCommand = new Command(async () =>
             {
-                await Shell.Current.GoToAsync("//SignupView");
-
+                await Shell.Current.GoToAsync("//SigninView");
             });
         }
 
         private async Task Login()
         {
+
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            {
+                await Application.Current.MainPage.DisplayAlert("Fel", "Fyll i alla fält", "OK");
+                return;
+            }
+
             var user = await _loginService.LoginAsync(Username, Password);
 
             if (user == null)
@@ -61,17 +63,14 @@ namespace betterschoolsoft.ViewModel
                 return;
             }
 
-            if (user.Role == Users.UserRole.Student)
+            if (user is Students)
             {
                 await Shell.Current.GoToAsync("//StudentSection/StudentDashboardView");
             }
-            else if (user.Role == Users.UserRole.Teacher)
+            else if (user is Teachers)
             {
                 await Shell.Current.GoToAsync("//TeacherSection/TeacherDashboardView");
             }
         }
-
-        */
-
     }
 }

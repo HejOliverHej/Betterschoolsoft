@@ -20,38 +20,7 @@ namespace betterschoolsoft.ViewModel
 
         public StudentDashboardViewModel()
         {
-            TodayLessons = new ObservableCollection<Lesson>
-            {
-                new Lesson(
-                    id: 1,
-                    teacher: "Anna Larsson",
-                    classRoom: "Sal 204",
-                    startTime: "08:00",
-                    endTime: "09:00",
-                    weekday: "Wednesday",
-                    classid: "1"
-                ),
-
-                new Lesson(
-                    id: 2,
-                    teacher: "Peter Svensson",
-                    classRoom: "Sal 105",
-                    startTime: "09:15",
-                    endTime: "10:00",
-                    weekday: "Wednesday",
-                    classid: "1"
-                ),
-
-                new Lesson(
-                    id: 3,
-                    teacher: "Maria Ek",
-                    classRoom: "Gympasal",
-                    startTime: "10:30",
-                    endTime: "11:30",
-                    weekday: "Wednesday",
-                    classid: "1"
-                )
-            };
+            
 
             
 

@@ -10,7 +10,13 @@
 
 
 
+    <ShellContent
+        Route="LoginView"
+        ContentTemplate="{DataTemplate View:LoginView}" />
 
+      <ShellContent
+        Route="SigninView"
+        ContentTemplate="{DataTemplate View:SigninView}" />
 
 
 
@@ -64,13 +70,7 @@
     </TabBar>
 
 
-    <ShellContent
-Route="LoginView"
-ContentTemplate="{DataTemplate View:LoginView}" />
-
-    <ShellContent
-Route="SignupView"
-ContentTemplate="{DataTemplate View:Singinview}" />
+    
 
 
 

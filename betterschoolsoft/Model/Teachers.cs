@@ -1,51 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace betterschoolsoft.Model
 {
-    internal class Teachers : Users
+    public class Teachers : Users
     {
+        private List<Subject> subjects;
 
-        private List<Subject> subjects = new List<Subject>();
+        [JsonConstructor]
+        public Teachers(
+            Guid id,
+            string username,
+            string password,
+            List<Subject> subjects)
+            : base(id, username, password)
+        {
+            Subjects = subjects ?? new List<Subject>();
+        }
 
         public Teachers(string username, string password)
             : base(username, password)
         {
-        }
-
-        public Teachers(string username, string password, List<Subject> subjects)
-            : base(username, password)
-        {
-            Subjects = subjects;
+            Subjects = new List<Subject>();
         }
 
         public List<Subject> Subjects
         {
             get => subjects;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentException("Subjects list cannot be null.");
-
-                subjects = value;
-            }
-        }
-
-        public void AddSubject(Subject subject)
-        {
-            if (subject == null)
-                throw new ArgumentException("Subject cannot be null.");
-
-            subjects.Add(subject);
-        }
-
-        public void RemoveSubject(Subject subject)
-        {
-            subjects.Remove(subject);
-
-
+            set => subjects = value ?? new List<Subject>();
         }
     }
 }

@@ -1,25 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace betterschoolsoft.Model
 {
-    abstract class Users
+    public abstract class Users
     {
+        public Guid Id { get; private set; }
 
-        public Guid Id { get; set; } = Guid.NewGuid();
-        private string username = string.Empty;
-        private string password = string.Empty;
-        public enum UserRoll {Student, Teacher}
+        private string username;
+        private string password;
 
-        
-
-        protected Users(string username, string password)
+        [JsonConstructor]
+        protected Users(Guid id, string username, string password)
         {
+            Id = id;
             Username = username;
             Password = password;
         }
 
+        protected Users(string username, string password)
+        {
+            Id = Guid.NewGuid();
+            Username = username;
+            Password = password;
+        }
 
         public string Username
         {
@@ -28,10 +32,6 @@ namespace betterschoolsoft.Model
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Username cannot be empty.");
-
-                if (value.Length < 3)
-                    throw new ArgumentException("Username must be at least 3 characters.");
-
                 username = value;
             }
         }
@@ -43,14 +43,8 @@ namespace betterschoolsoft.Model
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Password cannot be empty.");
-
-                if (value.Length < 6)
-                    throw new ArgumentException("Password must be at least 6 characters.");
-
                 password = value;
             }
         }
-
-
     }
 }

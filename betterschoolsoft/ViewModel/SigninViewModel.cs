@@ -1,16 +1,12 @@
 ﻿using betterschoolsoft.Model;
 using betterschoolsoft.Service;
-using betterschoolsoft.View;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace betterschoolsoft.ViewModel
 {
-    internal class SigninViewModel : BaseViewModel
+    public class SigninViewModel : BaseViewModel
     {
-        private readonly UserService _userService = new();
+        private readonly SignupService _signupService;
 
         public string Username { get; set; } = "";
         public string Password { get; set; } = "";
@@ -19,66 +15,63 @@ namespace betterschoolsoft.ViewModel
         public bool IsStudent { get; set; }
         public bool IsTeacher { get; set; }
 
-        public string Message { get; set; } = "";
+        private string _message = "";
+        public string Message
+        {
+            get => _message;
+            set
+            {
+                _message = value;
+                OnPropertyChanged(nameof(Message));
+            }
+        }
 
         public ICommand SignUpCommand { get; }
 
         public SigninViewModel()
         {
+            _signupService = new SignupService(new JsonUserStorageService());
             SignUpCommand = new Command(async () => await SignUp());
         }
 
         private async Task SignUp()
         {
+            // Basic UI validation
+            if (string.IsNullOrWhiteSpace(Username) || Username.Length < 2)
+            {
+                Message = "Användarnamnet måste vara minst 2 tecken.";
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Password) || Password.Length < 2)
+            {
+                Message = "Lösenordet måste vara minst 2 tecken.";
+                return;
+            }
+
             if (Password != ConfirmPassword)
             {
                 Message = "Lösenorden matchar inte!";
-                OnPropertyChanged(nameof(Message));
                 return;
             }
 
             if (!IsStudent && !IsTeacher)
             {
                 Message = "Välj en roll!";
-                OnPropertyChanged(nameof(Message));
                 return;
             }
 
-            var users = _userService.GetUsers();
+            // Kör signup-service
+            var result = await _signupService.CreateUserAsync(
+                Username, Password, IsStudent, IsTeacher);
 
-            Users newUser;
+            Message = result.message;
 
-            if (IsTeacher)
+            if (result.success)
             {
-                newUser = new Teachers
-                {
-                    Id = users.Count + 1,
-                    Username = Username,
-                    Password = Password,
-                    Subjects = new List<string>() 
-                };
+                await Task.Delay(800);
+                await Shell.Current.GoToAsync("//LoginView");
             }
-            else
-            {
-                newUser = new Students
-                {
-                    Id = users.Count + 1,
-                    Username = Username,
-                    Password = Password,
-                    Classid = "" 
-                };
-            }
-
-            users.Add(newUser);
-            _userService.SaveUsers(users);
-
-            Message = "Konto skapat!";
-            OnPropertyChanged(nameof(Message));
-
-            await Task.Delay(800);
-
-            await Shell.Current.GoToAsync("//LoginView");
-
         }
     }
 }
