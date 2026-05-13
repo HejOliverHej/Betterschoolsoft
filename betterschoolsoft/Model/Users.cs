@@ -12,6 +12,7 @@ namespace betterschoolsoft.Model
         private string password = string.Empty;
         public enum UserRoll {Student, Teacher}
 
+        public Users() { } 
 
         protected Users(int id, string username, string password)
         {

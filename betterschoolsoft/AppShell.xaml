@@ -7,6 +7,76 @@
     Title="betterschoolsoft">
 
 
+
+
+
+
+
+
+
+
+    <TabBar Route="StudentSection">
+        <ShellContent
+         Title="Dashboard"
+         Icon="home.png"
+         ContentTemplate="{DataTemplate View:StudentDashboardView}"
+         Route="StudentDashboardView" />
+
+        <ShellContent
+         Title="Schema"
+         Icon="calendar.png"
+         ContentTemplate="{DataTemplate View:StudentScheduleView}"
+         Route="StudentScheduleView" />
+
+        <ShellContent
+         Title="Frånvaro"
+
+         ContentTemplate="{DataTemplate View:StudentAbsenceView}"
+         Route="StudentAbsenceView" />
+
+
+        <ShellContent
+             Title="Meddelanden"
+             ContentTemplate="{DataTemplate View:StudentMessagesView}"
+             Route="StudentMessagesView" />
+    </TabBar>
+
+
+
+    <TabBar Route="TeacherSection">
+        <ShellContent
+        Title="Dashboard"
+        Icon="teacher.png"
+        ContentTemplate="{DataTemplate View:TeacherDashboardView}"
+        Route="TeacherDashboardView" />
+
+        <ShellContent
+        Title="Klasser"
+        Icon="class.png"
+        ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
+        Route="ClassManagementTeacherView" />
+
+        <ShellContent
+        Title="Schema"
+        Icon="edit.png"
+        ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
+        Route="ScheduleEditorTeacherView" />
+    </TabBar>
+
+
+    <ShellContent
+Route="LoginView"
+ContentTemplate="{DataTemplate View:LoginView}" />
+
+    <ShellContent
+Route="SignupView"
+ContentTemplate="{DataTemplate View:Singinview}" />
+
+
+
+
+
+
     <TabBar Route="AdminSection">
         <ShellContent
             Title="Dashboard"
@@ -31,62 +101,14 @@
 
 
 
-    <TabBar Route="TeacherSection">
-        <ShellContent
-            Title="Dashboard"
-            Icon="teacher.png"
-            ContentTemplate="{DataTemplate View:TeacherDashboardView}"
-            Route="TeacherDashboardView" />
-
-        <ShellContent
-            Title="Klasser"
-            Icon="class.png"
-            ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
-            Route="ClassManagementTeacherView" />
-
-        <ShellContent
-            Title="Schema"
-            Icon="edit.png"
-            ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
-            Route="ScheduleEditorTeacherView" />
-    </TabBar>
+    
 
     
 
-    <ShellContent
-     Route="LoginView"
-     ContentTemplate="{DataTemplate View:LoginView}" />
-
-    <ShellContent
-     Route="SignupView"
-     ContentTemplate="{DataTemplate View:Singinview}" />
+    
     
     
 
-    <TabBar Route="StudentSection">
-                <ShellContent
-            Title="Dashboard"
-            Icon="home.png"
-            ContentTemplate="{DataTemplate View:StudentDashboardView}"
-            Route="StudentDashboardView" />
-
-                <ShellContent
-            Title="Schema"
-            Icon="calendar.png"
-            ContentTemplate="{DataTemplate View:StudentScheduleView}"
-            Route="StudentScheduleView" />
-
-                <ShellContent
-            Title="Frånvaro"
    
-            ContentTemplate="{DataTemplate View:StudentAbsenceView}"
-            Route="StudentAbsenceView" />
-
-
-                <ShellContent
-                Title="Meddelanden"
-                ContentTemplate="{DataTemplate View:StudentMessagesView}"
-                Route="StudentMessagesView" />
-    </TabBar>
 
 </Shell>

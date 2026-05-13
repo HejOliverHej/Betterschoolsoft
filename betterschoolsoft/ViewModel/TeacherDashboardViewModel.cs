@@ -14,9 +14,7 @@ namespace betterschoolsoft.ViewModel
 
             public ObservableCollection<Lesson> TodayLessons { get; set; }
 
-            public ICommand OpenClassesCommand { get; }
-            public ICommand OpenScheduleEditorCommand { get; }
-            public ICommand OpenMessagesCommand { get; }
+           
 
             public TeacherDashboardViewModel()
             {

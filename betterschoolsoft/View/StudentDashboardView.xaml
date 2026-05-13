@@ -17,17 +17,7 @@
                        FontAttributes="Bold"/>
     </VerticalStackLayout>
     
-    <HorizontalStackLayout Spacing="15">
-        <Button Text="Schema"
-                        Command="{Binding OpenScheduleCommand}"
-                        WidthRequest="120"/>
-        <Button Text="Frånvaro"
-                        Command="{Binding OpenAbsenceCommand}"
-                        WidthRequest="120"/>
-        <Button Text="Meddelanden"
-                        Command="{Binding OpenMessagesCommand}"
-                        WidthRequest="120"/>
-    </HorizontalStackLayout>
+    
 
     <Label Text="Dagens lektioner"
                    FontSize="22"

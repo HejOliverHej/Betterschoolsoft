@@ -8,6 +8,8 @@ namespace betterschoolsoft.Model
     {
 
         private string classid = string.Empty;
+
+        public Students() { } 
         public Students(int id, string username, string password, string classid)
             : base(id, username, password)
         {

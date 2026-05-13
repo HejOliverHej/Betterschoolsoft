@@ -6,11 +6,36 @@
              >
 
 
-    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10"  WidthRequest="250">
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Spacing="10"
+                         WidthRequest="250">
 
-        <Label x:Name="SigninLabel" WidthRequest="250" FontSize="20"/>
-        <Entry x:Name="UsernameEntry" Placeholder="Username" WidthRequest="250"/>
-        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" WidthRequest="250"/>
+        <Label Text="Skapa konto" FontSize="20"/>
+
+        <Entry Placeholder="Username"
+               Text="{Binding Username}" />
+
+        <Entry Placeholder="Password"
+               IsPassword="True"
+               Text="{Binding Password}" />
+
+        <Entry Placeholder="Confirm Password"
+               IsPassword="True"
+               Text="{Binding ConfirmPassword}" />
+
+        <Label Text="Välj roll:" />
+
+        <RadioButton Content="Student"
+                     IsChecked="{Binding IsStudent}" />
+
+        <RadioButton Content="Teacher"
+                     IsChecked="{Binding IsTeacher}" />
+
+        <Button Text="Spara konto"
+                Command="{Binding SignUpCommand}" />
+
+        <Label Text="{Binding Message}" TextColor="Red"/>
 
     </VerticalStackLayout>
     

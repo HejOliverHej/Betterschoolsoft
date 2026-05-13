@@ -9,6 +9,7 @@ namespace betterschoolsoft.Model
     {
 
         private List<string> subjects = new List<string>();
+        public Teachers() { } 
         public Teachers(int id, string username, string password, string subjects)
             : base(id, username, password)
         {
