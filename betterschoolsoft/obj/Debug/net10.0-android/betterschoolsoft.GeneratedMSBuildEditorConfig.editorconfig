@@ -67,6 +67,26 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminClassPopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminClassPopup.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AdminClassPopup.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AdminClassPopup.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminClassView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminClassView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AdminClassView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AdminClassView.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminMessageView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminMessageView.xaml

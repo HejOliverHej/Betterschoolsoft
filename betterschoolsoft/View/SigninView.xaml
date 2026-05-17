@@ -32,6 +32,9 @@
         <RadioButton Content="Teacher"
                      IsChecked="{Binding IsTeacher}" />
 
+        <RadioButton Content="Admin"
+                     IsChecked="{Binding IsAdmin}" />
+
         <Button Text="Spara konto"
                 Command="{Binding SignUpCommand}" />
 

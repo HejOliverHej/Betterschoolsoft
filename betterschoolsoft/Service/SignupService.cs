@@ -12,7 +12,7 @@ namespace betterschoolsoft.Service
         }
 
         public async Task<(bool success, string message)> CreateUserAsync(
-            string username, string password, bool isStudent, bool isTeacher)
+            string username, string password, bool isStudent, bool isTeacher, bool isAdmin)
         {
             try
             {
@@ -23,17 +23,25 @@ namespace betterschoolsoft.Service
 
                 Users newUser;
 
-                if (isTeacher)
+                if (isAdmin)
+                {
+                    newUser = new Admin(username, password);
+                }
+                else if (isTeacher)
                 {
                     newUser = new Teachers(username, password);
                 }
-                else
+                else if (isStudent)
                 {
-                    // Dummy teacher + class (tills du bygger riktig klasshantering)
+                    // Dummy till jag skapar system för att lägga till lärare till klasser och lärare till dem
                     var dummyTeacher = new Teachers("TempTeacher", "TempPassword");
                     var dummyClass = new ClassGroup("TempClass", dummyTeacher);
 
                     newUser = new Students(username, password, dummyClass);
+                }
+                else
+                {
+                    return (false, "Ingen roll vald.");
                 }
 
                 users.Add(newUser);

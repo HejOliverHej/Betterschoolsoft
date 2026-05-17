@@ -15,6 +15,8 @@ namespace betterschoolsoft.ViewModel
         public bool IsStudent { get; set; }
         public bool IsTeacher { get; set; }
 
+        public bool IsAdmin { get; set; }
+
         private string _message = "";
         public string Message
         {
@@ -36,7 +38,6 @@ namespace betterschoolsoft.ViewModel
 
         private async Task SignUp()
         {
-            // Basic UI validation
             if (string.IsNullOrWhiteSpace(Username) || Username.Length < 2)
             {
                 Message = "Användarnamnet måste vara minst 2 tecken.";
@@ -55,15 +56,14 @@ namespace betterschoolsoft.ViewModel
                 return;
             }
 
-            if (!IsStudent && !IsTeacher)
+            if (!IsStudent && !IsTeacher && !IsAdmin)
             {
                 Message = "Välj en roll!";
                 return;
             }
 
-            // Kör signup-service
             var result = await _signupService.CreateUserAsync(
-                Username, Password, IsStudent, IsTeacher);
+                Username, Password, IsStudent, IsTeacher, IsAdmin);
 
             Message = result.message;
 

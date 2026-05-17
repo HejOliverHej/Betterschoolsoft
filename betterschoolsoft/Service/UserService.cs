@@ -33,7 +33,9 @@ namespace betterschoolsoft.Service
                                     DerivedTypes =
                                     {
                                         new JsonDerivedType(typeof(Students), "student"),
-                                        new JsonDerivedType(typeof(Teachers), "teacher")
+                                        new JsonDerivedType(typeof(Teachers), "teacher"),
+                                        new JsonDerivedType(typeof(Admin), "admin")
+
                                     }
                                 };
                             }
