@@ -30,5 +30,11 @@ namespace betterschoolsoft.Model
             get => subjects;
             set => subjects = value ?? new List<Subject>();
         }
+        public override string GetDashboardRoute()
+        {
+            return "//TeacherSection/TeacherDashboardView";
+        }
+
     }
+
 }

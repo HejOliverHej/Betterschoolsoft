@@ -46,5 +46,8 @@ namespace betterschoolsoft.Model
                 password = value;
             }
         }
+
+        public abstract string GetDashboardRoute(); // här är lite polyformism för att det skulle vara med 
+
     }
 }

@@ -69,5 +69,11 @@ namespace betterschoolsoft.Model
                 throw new ArgumentException("Absence cannot be null.");
             absences.Add(absence);
         }
+
+        public override string GetDashboardRoute()
+        {
+            return "//StudentSection/StudentDashboardView";
+        }
+
     }
 }

@@ -63,14 +63,8 @@ namespace betterschoolsoft.ViewModel
                 return;
             }
 
-            if (user is Students)
-            {
-                await Shell.Current.GoToAsync("//StudentSection/StudentDashboardView");
-            }
-            else if (user is Teachers)
-            {
-                await Shell.Current.GoToAsync("//TeacherSection/TeacherDashboardView");
-            }
+            await Shell.Current.GoToAsync(user.GetDashboardRoute());
+
         }
     }
 }
