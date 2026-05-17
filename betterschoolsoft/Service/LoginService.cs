@@ -1,23 +1,26 @@
 ﻿using betterschoolsoft.Model;
+using betterschoolsoft.Service;
 
-namespace betterschoolsoft.Service
+public class LoginService
 {
-    internal class LoginService
+    private readonly IUserStorageService _storage;
+
+    public LoginService(IUserStorageService storage)
     {
-        private readonly IUserStorageService _storage;
+        _storage = storage;
+    }
 
-        public LoginService(IUserStorageService storage)
+    public async Task<Users> LoginAsync(string username, string password)
+    {
+        if (username == "admin" && password == "admin123")
         {
-            _storage = storage;
+            return new Admin("admin", "admin123");
         }
 
-        public async Task<Users?> LoginAsync(string username, string password)
-        {
-            var users = await _storage.LoadAsync();
+        var users = await _storage.LoadAsync();
 
-            return users.FirstOrDefault(u =>
-                u.Username.Equals(username, StringComparison.OrdinalIgnoreCase) &&
-                u.Password == password);
-        }
+        return users.FirstOrDefault(u =>
+            u.Username.Equals(username, StringComparison.OrdinalIgnoreCase) &&
+            u.Password == password);
     }
 }

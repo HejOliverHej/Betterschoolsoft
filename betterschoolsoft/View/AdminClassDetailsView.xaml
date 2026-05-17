@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="betterschoolsoft.View.AdminClassDetailsView"
+             xmlns:vm="clr-namespace:betterschoolsoft.ViewModel"
+
+             Title="AdminClassDetailsView">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <Frame Padding="15" BorderColor="LightGray" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Klassinformation" FontSize="22" FontAttributes="Bold" />
+
+                    <Label Text="Klassnamn:" FontSize="14" />
+                    <Label Text="{Binding Class.Name}" FontSize="18" />
+
+                    <Button Text="Byt klassnamn"
+                            Command="{Binding RenameClassCommand}" />
+
+                    <Label Text="Klasslärare:" FontSize="14" />
+                    <Label Text="{Binding Class.ClassTeacher.Username}" FontSize="18" />
+
+                    <Button Text="Byt klasslärare"
+                            Command="{Binding ChangeTeacherCommand}" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <Frame Padding="15" BorderColor="LightGray" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Elever" FontSize="22" FontAttributes="Bold" />
+
+                    <CollectionView ItemsSource="{Binding Class.Students}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding Username}" FontSize="16" />
+                                    <Button Text="Ta bort"
+                                            FontSize="12"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminClassDetailsViewModel}}, Path=RemoveStudentCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Button Text="Lägg till elev"
+                            Command="{Binding AddStudentCommand}" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <Frame Padding="15" BorderColor="LightGray" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Lärare" FontSize="22" FontAttributes="Bold" />
+
+                    <CollectionView ItemsSource="{Binding Class.Teachers}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding Username}" FontSize="16" />
+                                    <Button Text="Ta bort"
+                                            FontSize="12"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminClassDetailsViewModel}}, Path=RemoveTeacherCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Button Text="Lägg till lärare"
+                            Command="{Binding AddTeacherCommand}" />
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

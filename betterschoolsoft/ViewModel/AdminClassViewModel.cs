@@ -1,9 +1,7 @@
 ﻿using betterschoolsoft.Model;
 using betterschoolsoft.Service;
-using System;
-using System.Collections.Generic;
+using betterschoolsoft.View;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace betterschoolsoft.ViewModel
@@ -13,18 +11,32 @@ namespace betterschoolsoft.ViewModel
         private readonly ClassManagerService _classService;
         private readonly IUserStorageService _storage;
 
-        public ObservableCollection<ClassGroup> Classes { get; set; }
+        private ObservableCollection<ClassGroup> _classes;
+        public ObservableCollection<ClassGroup> Classes
+        {
+            get => _classes;
+            set
+            {
+                _classes = value;
+                OnPropertyChanged(nameof(Classes));
+            }
+        }
 
-        public ICommand CreateClassCommand { get; }
+        public ICommand OpenCreateClasspopupCommand { get; }
+        public ICommand OpenClassDetailsCommand { get; }
 
         public AdminClassViewModel()
         {
             _storage = new JsonUserStorageService();
-            _classService = new ClassManagerService(_storage);
+            _classService = new ClassManagerService(
+                new JsonUserStorageService(),
+                new JsonClassStorageService());
+
 
             Classes = new ObservableCollection<ClassGroup>();
 
-            CreateClassCommand = new Command(async () => await CreateClass());
+            OpenCreateClasspopupCommand = new Command(async () => await OpenCreateClassPopup());
+            OpenClassDetailsCommand = new Command<ClassGroup>(async (c) => await OpenClassDetails(c));
 
             LoadClasses();
         }
@@ -32,16 +44,34 @@ namespace betterschoolsoft.ViewModel
         private async void LoadClasses()
         {
             var classes = await _classService.GetAllClassesAsync();
-            Classes.Clear();
-            foreach (var c in classes)
-                Classes.Add(c);
+
+            Classes = new ObservableCollection<ClassGroup>(classes);
         }
 
-        private async Task CreateClass()
+        private async Task OpenCreateClassPopup()
         {
-            // Här kan vi lägga UI för att välja lärare + klassnamn
-            await Application.Current.MainPage.DisplayAlert("Info", "Skapa klass UI kommer här", "OK");
+            var popup = new AdminClassPopup();
+            var vm = new CreateClassPopupViewModel();
+
+            popup.BindingContext = vm;
+
+            vm.CloseRequested += () =>
+            {
+                Application.Current.MainPage.Navigation.PopModalAsync();
+                LoadClasses(); 
+            };
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(popup);
+        }
+
+        private async Task OpenClassDetails(ClassGroup classGroup)
+        {
+            var page = new AdminClassDetailsView();
+            var vm = new AdminClassDetailsViewModel(classGroup);
+
+            page.BindingContext = vm;
+
+            await Application.Current.MainPage.Navigation.PushAsync(page);
         }
     }
-
 }

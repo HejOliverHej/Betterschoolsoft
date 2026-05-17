@@ -14,9 +14,7 @@
         Route="LoginView"
         ContentTemplate="{DataTemplate View:LoginView}" />
 
-      <ShellContent
-        Route="SigninView"
-        ContentTemplate="{DataTemplate View:SigninView}" />
+      
 
 
 

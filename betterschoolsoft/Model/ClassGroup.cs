@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace betterschoolsoft.Model
 {
     public class ClassGroup
     {
+        public Guid Id { get; set; } = Guid.NewGuid();
+
         [JsonConstructor]
-        public ClassGroup(string name, Teachers classTeacher, List<Students> students, List<Teachers> teachers)
+        public ClassGroup(Guid id, string name, Teachers classTeacher, List<Students> students, List<Teachers> teachers)
         {
+            Id = id;
             Name = name;
             ClassTeacher = classTeacher;
             Students = students ?? new List<Students>();
@@ -16,6 +20,7 @@ namespace betterschoolsoft.Model
 
         public ClassGroup(string name, Teachers classTeacher)
         {
+            Id = Guid.NewGuid();
             Name = name;
             ClassTeacher = classTeacher;
             Students = new List<Students>();
@@ -27,5 +32,4 @@ namespace betterschoolsoft.Model
         public List<Students> Students { get; set; }
         public List<Teachers> Teachers { get; set; }
     }
-
 }

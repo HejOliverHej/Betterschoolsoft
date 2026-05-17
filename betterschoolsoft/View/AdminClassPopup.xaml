@@ -3,10 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="betterschoolsoft.View.AdminClassPopup"
              Title="AdminClassPopup">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Frame Padding="20"
+           BackgroundColor="White"
+           CornerRadius="10"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           WidthRequest="300">
+
+        <VerticalStackLayout Spacing="15">
+
+            <Label Text="Skapa ny klass"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
+
+            <Entry Placeholder="Klassnamn"
+                   Text="{Binding ClassName}"
+                   BackgroundColor="#EEEEEE"
+                   TextColor="Black"
+                   PlaceholderColor="#666666" />
+
+            <Picker Title="Välj klasslärare"
+                    ItemsSource="{Binding Teachers}"
+                    ItemDisplayBinding="{Binding Username}"
+                    SelectedItem="{Binding SelectedTeacher}"
+                    BackgroundColor="#EEEEEE"
+                    TextColor="Black"
+                    TitleColor="#666666" />
+
+            <Button Text="Skapa"
+                    Command="{Binding CreateCommand}"
+                    BackgroundColor="#DDDDDD"
+                    TextColor="Black" />
+
+            <Button Text="Avbryt"
+                    Command="{Binding CancelCommand}"
+                    BackgroundColor="#DDDDDD"
+                    TextColor="Black" />
+
+        </VerticalStackLayout>
+
+    </Frame>
+
+
 </ContentPage>

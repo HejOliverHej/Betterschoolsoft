@@ -2,11 +2,10 @@ using betterschoolsoft.ViewModel;
 
 namespace betterschoolsoft.View;
 
-public partial class AdminClassPopup : ContentPage
+public partial class AdminClassDetailsView : ContentPage
 {
-	public AdminClassPopup()
+	public AdminClassDetailsView()
 	{
 		InitializeComponent();
-
-    }
+	}
 }

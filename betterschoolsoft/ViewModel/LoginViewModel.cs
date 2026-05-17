@@ -49,6 +49,13 @@ namespace betterschoolsoft.ViewModel
         private async Task Login()
         {
 
+            await Application.Current.MainPage.DisplayAlert(
+       "DEBUG",
+       $"Username: '{Username}'\nPassword: '{Password}'",
+       "OK"
+   );
+
+
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
                 await Application.Current.MainPage.DisplayAlert("Fel", "Fyll i alla fält", "OK");

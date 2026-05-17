@@ -1,56 +1,65 @@
 ﻿using betterschoolsoft.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace betterschoolsoft.Service
 {
     public class ClassManagerService
     {
-        private readonly IUserStorageService _storage;
+        private readonly IUserStorageService _userStorage;
+        private readonly IClassStorageService _classStorage;
 
-        public ClassManagerService(IUserStorageService storage)
+        public ClassManagerService(IUserStorageService userStorage, IClassStorageService classStorage)
         {
-            _storage = storage;
+            _userStorage = userStorage;
+            _classStorage = classStorage;
         }
 
         public async Task<List<ClassGroup>> GetAllClassesAsync()
         {
-            var users = await _storage.LoadAsync();
-            return users
-                .OfType<Students>()
-                .Select(s => s.ClassGroup)
-                .Distinct()
-                .ToList();
+            return await _classStorage.LoadClassesAsync();
         }
 
         public async Task CreateClassAsync(string name, Teachers classTeacher)
         {
-            var users = await _storage.LoadAsync();
+            var classes = await _classStorage.LoadClassesAsync();
 
             var newClass = new ClassGroup(name, classTeacher);
 
-            classTeacher.Subjects ??= new List<Subject>();
+            classes.Add(newClass);
 
-            await _storage.SaveAsync(users);
+            await _classStorage.SaveClassesAsync(classes);
         }
 
         public async Task AddStudentToClassAsync(Students student, ClassGroup classGroup)
         {
-            student.ClassGroup = classGroup;
-            classGroup.Students.Add(student);
+            var classes = await _classStorage.LoadClassesAsync();
 
-            var users = await _storage.LoadAsync();
-            await _storage.SaveAsync(users);
+            var target = classes.FirstOrDefault(c => c.Id == classGroup.Id);
+            if (target != null)
+            {
+                target.Students.Add(student);
+                student.ClassGroup = target;
+            }
+
+            await _classStorage.SaveClassesAsync(classes);
+
+            var users = await _userStorage.LoadAsync();
+            await _userStorage.SaveAsync(users);
         }
 
         public async Task AddTeacherToClassAsync(Teachers teacher, ClassGroup classGroup)
         {
-            classGroup.Teachers.Add(teacher);
+            var classes = await _classStorage.LoadClassesAsync();
 
-            var users = await _storage.LoadAsync();
-            await _storage.SaveAsync(users);
+            var target = classes.FirstOrDefault(c => c.Id == classGroup.Id);
+            if (target != null)
+            {
+                target.Teachers.Add(teacher);
+            }
+
+            await _classStorage.SaveClassesAsync(classes);
         }
     }
-
 }
