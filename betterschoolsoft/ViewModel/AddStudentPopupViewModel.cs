@@ -34,36 +34,33 @@ namespace betterschoolsoft.ViewModel
 
         private async Task AddStudent()
         {
-            if (string.IsNullOrWhiteSpace(StudentName))
+            
+
+            try
             {
-                await Application.Current.MainPage.DisplayAlert("Fel", "Ange elevens namn.", "OK");
-                return;
+                var users = await _userStorage.LoadAsync();
+
+                var newStudent = new Students(StudentName, Password);
+
+                if (_class != null)
+                {
+                    newStudent.ClassGroup = _class;
+                    _class.Students.Add(newStudent);
+
+                    var classes = await _classService.GetAllClassesAsync();
+                    await _classService.SaveClassesAsync(classes);
+                }
+
+                users.Add(newStudent);
+                await _userStorage.SaveAsync(users);
+
+                CloseRequested?.Invoke();
             }
-            if (string.IsNullOrWhiteSpace(StudentName) || string.IsNullOrWhiteSpace(Password))
+            catch (ArgumentException ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Fel", "Ange både namn och lösenord.", "OK");
-                return;
+                await Application.Current.MainPage.DisplayAlert("Fel", ex.Message, "OK");
             }
-
-
-            var users = await _userStorage.LoadAsync();
-
-            var newStudent = new Students(StudentName, Password);
-
-
-            if (_class != null)
-            {
-                newStudent.ClassGroup = _class;
-                _class.Students.Add(newStudent);
-
-                var classes = await _classService.GetAllClassesAsync();
-                await _classService.SaveClassesAsync(classes);
-            }
-
-            users.Add(newStudent);
-            await _userStorage.SaveAsync(users);
-
-            CloseRequested?.Invoke();
         }
+
     }
 }

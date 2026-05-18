@@ -17,7 +17,8 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <HorizontalStackLayout Spacing="10">
-                                    <Label Text="{Binding Username}" FontSize="18" />
+                                    <Label Text="{Binding Username, StringFormat='Username: {0}'}" FontSize="18" />
+                                    <Label Text="{Binding Password, StringFormat='Password: {0}'}" FontSize="18"/>
                                     <Button Text="Ta bort"
                                             FontSize="12"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminAddTeachersAndStudentsViewmodel}}, Path=RemoveStudentCommand}"
@@ -42,7 +43,8 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <HorizontalStackLayout Spacing="10">
-                                    <Label Text="{Binding Username}" FontSize="18" />
+                                    <Label Text="{Binding Username,StringFormat='Username: {0}'}" FontSize="18" />
+                                    <Label Text="{Binding Password,StringFormat='Password: {0}'}" FontSize="18" />
                                     <Button Text="Ta bort"
                                             FontSize="12"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminAddTeachersAndStudentsViewmodel}}, Path=RemoveTeacherCommand}"

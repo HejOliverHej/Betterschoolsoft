@@ -11,21 +11,18 @@
            HorizontalOptions="Center"
            WidthRequest="300">
 
-        <VerticalStackLayout Spacing="15">
+        <VerticalStackLayout Padding="20" Spacing="15">
 
-            <Label Text="Lägg till lärare"
-                   FontSize="20"
-                   HorizontalOptions="Center" />
+            <Label Text="Lägg till lärare" FontSize="24" />
 
-            <Picker ItemsSource="{Binding AvailableTeachers}"
-                    ItemDisplayBinding="{Binding Username}"
-                    SelectedItem="{Binding SelectedTeacher}" />
+            <Entry Placeholder="Username" TextColor="Black" Text="{Binding TeacherName}" />
 
-            <Button Text="Lägg till"
-                    Command="{Binding AddCommand}" />
+            <Entry Placeholder="Lösenord"
+               IsPassword="True"
+               Text="{Binding Password}" TextColor="Black" />
 
-            <Button Text="Avbryt"
-                    Command="{Binding CancelCommand}" />
+            <Button Text="Lägg till" Command="{Binding AddCommand}" />
+            <Button Text="Avbryt" Command="{Binding CancelCommand}" />
 
         </VerticalStackLayout>
 

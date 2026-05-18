@@ -32,6 +32,8 @@ namespace betterschoolsoft.Model
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Username cannot be empty.");
+                if (value.Contains(" "))
+                    throw new ArgumentException("Username cannot be have space in it.");
                 username = value;
             }
         }
@@ -43,6 +45,8 @@ namespace betterschoolsoft.Model
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Password cannot be empty.");
+                if (value.Contains(" "))
+                    throw new ArgumentException("Password cannot be have space in it.");
                 password = value;
             }
         }

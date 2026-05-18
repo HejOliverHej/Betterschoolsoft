@@ -75,7 +75,8 @@ namespace betterschoolsoft.ViewModel
             if (!confirm) return;
 
             var users = await _userStorage.LoadAsync();
-            users.Remove(student);
+            users = users.Where(u => u.Id != student.Id).ToList();
+
 
             await _userStorage.SaveAsync(users);
 
@@ -85,7 +86,7 @@ namespace betterschoolsoft.ViewModel
         private async Task OpenAddTeacherPopup()
         {
             var popup = new AddTeacherPopup();
-            var vm = new AddTeacherPopupViewModel(null); // ingen klass
+            var vm = new AddTeacherPopupViewModel(); 
 
             popup.BindingContext = vm;
 
@@ -108,12 +109,16 @@ namespace betterschoolsoft.ViewModel
             if (!confirm) return;
 
             var users = await _userStorage.LoadAsync();
-            users.Remove(teacher);
+            users = users.Where(u => u.Id != teacher.Id).ToList();
+
 
             await _userStorage.SaveAsync(users);
 
             LoadUsers();
+
+           
+
         }
-        
+
     }
 }

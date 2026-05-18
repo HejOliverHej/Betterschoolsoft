@@ -17,11 +17,11 @@
                    FontSize="20"
                    HorizontalOptions="Center" />
 
-            <Entry Placeholder="Elevens namn"
+            <Entry Placeholder="Elevens Username"
                    Text="{Binding StudentName}" TextColor="Black" />
 
             <Label Text="Lösenord" />
-            <Entry Placeholder="Lösenord" TextColor="Black"           IsPassword="True"
+            <Entry Placeholder="Lösenord" TextColor="Black"
            Text="{Binding Password}" />
 
             <Button Text="Lägg till"

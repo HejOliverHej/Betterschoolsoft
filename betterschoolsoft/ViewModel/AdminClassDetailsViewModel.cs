@@ -8,6 +8,8 @@ namespace betterschoolsoft.ViewModel
 {
     public class AdminClassDetailsViewModel : BaseViewModel
     {
+
+        /*
         private readonly ClassManagerService _classService;
         private readonly IUserStorageService _userStorage;
 
@@ -158,5 +160,6 @@ namespace betterschoolsoft.ViewModel
 
             await Application.Current.MainPage.DisplayAlert("Sparat", "Ändringar sparade!", "OK");
         }
+        */
     }
 }

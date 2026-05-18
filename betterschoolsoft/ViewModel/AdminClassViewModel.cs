@@ -68,7 +68,7 @@ namespace betterschoolsoft.ViewModel
         private async Task OpenClassDetails(ClassGroup classGroup)
         {
             var page = new AdminClassDetailsView();
-            var vm = new AdminClassDetailsViewModel(classGroup);
+            var vm = new AdminClassDetailsViewModel();
 
             page.BindingContext = vm;
 
