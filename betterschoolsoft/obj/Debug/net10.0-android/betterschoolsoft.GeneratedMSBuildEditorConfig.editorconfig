@@ -67,6 +67,36 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AddStudentPopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AddStudentPopup.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AddStudentPopup.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AddStudentPopup.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AddTeacherPopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AddTeacherPopup.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AddTeacherPopup.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AddTeacherPopup.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminAddTeachersAndStudents.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminAddTeachersAndStudents.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AdminAddTeachersAndStudents.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AdminAddTeachersAndStudents.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminClassDetailsView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminClassDetailsView.xaml

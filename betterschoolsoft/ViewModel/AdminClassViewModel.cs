@@ -22,7 +22,7 @@ namespace betterschoolsoft.ViewModel
             }
         }
 
-        public ICommand OpenCreateClasspopupCommand { get; }
+        public ICommand OpenCreateClassPopupCommand { get; }
         public ICommand OpenClassDetailsCommand { get; }
 
         public AdminClassViewModel()
@@ -35,7 +35,8 @@ namespace betterschoolsoft.ViewModel
 
             Classes = new ObservableCollection<ClassGroup>();
 
-            OpenCreateClasspopupCommand = new Command(async () => await OpenCreateClassPopup());
+            OpenCreateClassPopupCommand = new Command(async () => await OpenCreateClassPopup());
+
             OpenClassDetailsCommand = new Command<ClassGroup>(async (c) => await OpenClassDetails(c));
 
             LoadClasses();

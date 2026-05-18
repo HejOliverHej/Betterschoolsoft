@@ -37,7 +37,7 @@
         </CollectionView>
 
 
-        <Button Text="Skapa ny klass" Command="{Binding OpenCreateClasspopupCommand}" />
+        <Button Text="Skapa ny klass" Command="{Binding OpenCreateClassPopupCommand}" />
 
     </VerticalStackLayout>
 

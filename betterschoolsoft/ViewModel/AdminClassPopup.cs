@@ -1,9 +1,8 @@
 ﻿using betterschoolsoft.Model;
 using betterschoolsoft.Service;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace betterschoolsoft.ViewModel
@@ -11,11 +10,8 @@ namespace betterschoolsoft.ViewModel
     public class CreateClassPopupViewModel : BaseViewModel
     {
         private readonly ClassManagerService _classService;
-        private readonly IUserStorageService _storage;
 
         public string ClassName { get; set; }
-        public ObservableCollection<Teachers> Teachers { get; set; }
-        public Teachers SelectedTeacher { get; set; }
 
         public ICommand CreateCommand { get; }
         public ICommand CancelCommand { get; }
@@ -24,25 +20,12 @@ namespace betterschoolsoft.ViewModel
 
         public CreateClassPopupViewModel()
         {
-            _storage = new JsonUserStorageService();
             _classService = new ClassManagerService(
                 new JsonUserStorageService(),
                 new JsonClassStorageService());
 
-
-            Teachers = new ObservableCollection<Teachers>();
-
             CreateCommand = new Command(async () => await CreateClass());
             CancelCommand = new Command(() => CloseRequested?.Invoke());
-
-            LoadTeachers();
-        }
-
-        private async void LoadTeachers()
-        {
-            var users = await _storage.LoadAsync();
-            foreach (var t in users.OfType<Teachers>())
-                Teachers.Add(t);
         }
 
         private async Task CreateClass()
@@ -53,16 +36,10 @@ namespace betterschoolsoft.ViewModel
                 return;
             }
 
-            if (SelectedTeacher == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Fel", "Välj klasslärare.", "OK");
-                return;
-            }
-
-            await _classService.CreateClassAsync(ClassName, SelectedTeacher);
+            // Skapa klass utan lärare
+            await _classService.CreateClassAsync(ClassName, null);
 
             CloseRequested?.Invoke();
         }
     }
-
 }

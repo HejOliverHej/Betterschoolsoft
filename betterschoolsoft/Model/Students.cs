@@ -6,74 +6,40 @@ namespace betterschoolsoft.Model
 {
     public class Students : Users
     {
-        private ClassGroup classGroup;
-        private List<Lesson> lessons;
-        private List<Absence> absences;
+        public Guid? ClassGroupId { get; set; }   
+        public List<Lesson> Lessons { get; set; }
+        public List<Absence> Absences { get; set; }
+
+        [JsonIgnore]
+        public ClassGroup ClassGroup { get; set; } 
 
         [JsonConstructor]
         public Students(
             Guid id,
             string username,
             string password,
-            ClassGroup classGroup,
+            Guid? classGroupId,
             List<Lesson> lessons,
             List<Absence> absences)
             : base(id, username, password)
         {
-            ClassGroup = classGroup;
+            ClassGroupId = classGroupId;
             Lessons = lessons ?? new List<Lesson>();
             Absences = absences ?? new List<Absence>();
         }
 
-        public Students(string username, string password, ClassGroup classGroup)
+        public Students(string username, string password)
             : base(Guid.NewGuid(), username, password)
         {
-            ClassGroup = classGroup;
+            ClassGroupId = null;
             Lessons = new List<Lesson>();
             Absences = new List<Absence>();
-        }
-
-        public ClassGroup ClassGroup
-        {
-            get => classGroup;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentException("ClassGroup cannot be null.");
-                classGroup = value;
-            }
-        }
-
-        public List<Lesson> Lessons
-        {
-            get => lessons;
-            set => lessons = value ?? new List<Lesson>();
-        }
-
-        public List<Absence> Absences
-        {
-            get => absences;
-            set => absences = value ?? new List<Absence>();
-        }
-
-        public void AddLesson(Lesson lesson)
-        {
-            if (lesson == null)
-                throw new ArgumentException("Lesson cannot be null.");
-            lessons.Add(lesson);
-        }
-
-        public void AddAbsence(Absence absence)
-        {
-            if (absence == null)
-                throw new ArgumentException("Absence cannot be null.");
-            absences.Add(absence);
         }
 
         public override string GetDashboardRoute()
         {
             return "//StudentSection/StudentDashboardView";
         }
-
     }
+
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="betterschoolsoft.View.AddStudentPopup"
+             Title="Lägg till elev">
+
+    <Frame Padding="20"
+           BackgroundColor="White"
+           CornerRadius="10"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           WidthRequest="300">
+
+        <VerticalStackLayout Spacing="15">
+
+            <Label Text="Lägg till elev"
+                   FontSize="20"
+                   HorizontalOptions="Center" />
+
+            <Entry Placeholder="Elevens namn"
+                   Text="{Binding StudentName}" TextColor="Black" />
+
+            <Label Text="Lösenord" />
+            <Entry Placeholder="Lösenord" TextColor="Black"           IsPassword="True"
+           Text="{Binding Password}" />
+
+            <Button Text="Lägg till"
+                    Command="{Binding AddCommand}" />
+
+            <Button Text="Avbryt"
+                    Command="{Binding CancelCommand}" />
+
+        </VerticalStackLayout>
+
+    </Frame>
+</ContentPage>

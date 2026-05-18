@@ -95,20 +95,25 @@
             Route="AdminMessageView" />
 
         <ShellContent Title ="klass hantering" ContentTemplate="{DataTemplate View:AdminClassView}" Route="AdminClassView" />
+
+        <ShellContent
+            Title ="lägg till och ta bort users" 
+            ContentTemplate="{DataTemplate View:AdminAddTeachersAndStudents}" 
+            Route="AdminAddTeachersAndStudents" />
+
     </TabBar>
 
 
 
 
 
-    
 
-    
 
-    
-    
-    
 
-   
+
+
+
+
+
 
 </Shell>

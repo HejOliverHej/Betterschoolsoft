@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="betterschoolsoft.View.AdminClassPopup"
              Title="AdminClassPopup">
+
     <Frame Padding="20"
            BackgroundColor="White"
            CornerRadius="10"
@@ -23,14 +24,6 @@
                    TextColor="Black"
                    PlaceholderColor="#666666" />
 
-            <Picker Title="Välj klasslärare"
-                    ItemsSource="{Binding Teachers}"
-                    ItemDisplayBinding="{Binding Username}"
-                    SelectedItem="{Binding SelectedTeacher}"
-                    BackgroundColor="#EEEEEE"
-                    TextColor="Black"
-                    TitleColor="#666666" />
-
             <Button Text="Skapa"
                     Command="{Binding CreateCommand}"
                     BackgroundColor="#DDDDDD"
@@ -44,6 +37,5 @@
         </VerticalStackLayout>
 
     </Frame>
-
 
 </ContentPage>

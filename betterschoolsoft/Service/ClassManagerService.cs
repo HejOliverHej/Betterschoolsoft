@@ -61,5 +61,9 @@ namespace betterschoolsoft.Service
 
             await _classStorage.SaveClassesAsync(classes);
         }
+        public async Task SaveClassesAsync(List<ClassGroup> classes)
+        {
+            await _classStorage.SaveClassesAsync(classes);
+        }
     }
 }
