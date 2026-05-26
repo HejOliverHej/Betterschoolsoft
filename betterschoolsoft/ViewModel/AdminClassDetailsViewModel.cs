@@ -61,6 +61,9 @@ namespace betterschoolsoft.ViewModel
 
         public ICommand SaveChangesCommand { get; }
 
+        public ICommand DeleteClassCommand { get; }
+
+
 
         public AdminClassDetailsViewModel(ClassGroup classGroup)
         {
@@ -75,6 +78,9 @@ namespace betterschoolsoft.ViewModel
             Class.Teachers ??= new ObservableCollection<Teachers>();
 
             SaveChangesCommand = new Command(async () => await SaveChanges());
+
+            DeleteClassCommand = new Command(async () => await DeleteClass());
+
 
 
             RemoveStudentCommand = new Command<Students>(async (s) => await RemoveStudent(s));
@@ -107,7 +113,7 @@ namespace betterschoolsoft.ViewModel
             OnPropertyChanged(nameof(AvailableTeachers));
 
             AvailableMentors = new ObservableCollection<Teachers>(
-    users.OfType<Teachers>()
+      users.OfType<Teachers>()
          .Where(t => t.Id != Class.ClassTeacherId)); 
 
             OnPropertyChanged(nameof(AvailableMentors));
@@ -179,6 +185,28 @@ namespace betterschoolsoft.ViewModel
             await Shell.Current.GoToAsync("//AdminSection/AdminClassView");
 
         }
+
+        private async Task DeleteClass()
+        {
+            bool confirm = await Application.Current.MainPage.DisplayAlert(
+                "Bekräfta",
+                $"Är du säker på att du vill ta bort klassen \"{Class.Name}\"?",
+                "Ja", "Nej");
+
+            if (!confirm)
+                return;
+
+            await _classService.DeleteClassAsync(Class);
+
+            await Application.Current.MainPage.DisplayAlert(
+                "Borttagen",
+                "Klassen har tagits bort.",
+                "OK");
+
+            await Shell.Current.GoToAsync("//AdminSection/AdminClassView");
+
+        }
+
 
 
     }

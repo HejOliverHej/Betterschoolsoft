@@ -68,6 +68,12 @@
             <Button Text="Lägg till lärare"
                     Command="{Binding AddTeacherCommand}" />
 
+            <Button Text="Ta bort klass"
+                 BackgroundColor="Red"
+                 TextColor="White"
+                 Command="{Binding DeleteClassCommand}" />
+
+
             <Button Text="Spara ändringar"
                  BackgroundColor="LightGreen"
                Command="{Binding SaveChangesCommand}" />

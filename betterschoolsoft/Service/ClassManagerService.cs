@@ -100,10 +100,8 @@ namespace betterschoolsoft.Service
             if (target == null)
                 return;
 
-            // Ta bort ID från klassen
             target.StudentIds.Remove(student.Id);
 
-            // Nollställ elevens koppling
             var studentInStorage = users.OfType<Students>().FirstOrDefault(s => s.Id == student.Id);
             if (studentInStorage != null)
                 studentInStorage.ClassGroupId = null;
@@ -121,10 +119,8 @@ namespace betterschoolsoft.Service
             if (target == null)
                 return;
 
-            // Ta bort ID från klassen
             target.TeacherIds.Remove(teacher.Id);
 
-            // Nollställ lärarens koppling
             var teacherInStorage = users.OfType<Teachers>().FirstOrDefault(t => t.Id == teacher.Id);
             if (teacherInStorage != null)
                 teacherInStorage.ClassGroupId = null;
@@ -142,10 +138,8 @@ namespace betterschoolsoft.Service
             if (target == null)
                 return;
 
-            // Uppdatera mentor-ID
             target.ClassTeacherId = newTeacher.Id;
 
-            // Uppdatera lärarens koppling
             var teacherInStorage = users.OfType<Teachers>().FirstOrDefault(t => t.Id == newTeacher.Id);
             if (teacherInStorage != null)
                 teacherInStorage.ClassGroupId = classGroup.Id;
@@ -153,6 +147,24 @@ namespace betterschoolsoft.Service
             await _classStorage.SaveClassesAsync(classes);
             await _userStorage.SaveAsync(users);
         }
+
+        public async Task DeleteClassAsync(ClassGroup classGroup)
+        {
+            var classes = await _classStorage.LoadClassesAsync();
+            var users = await _userStorage.LoadAsync();
+
+            classes.RemoveAll(c => c.Id == classGroup.Id);
+
+            foreach (var student in users.OfType<Students>().Where(s => s.ClassGroupId == classGroup.Id))
+                student.ClassGroupId = null;
+
+            foreach (var teacher in users.OfType<Teachers>().Where(t => t.ClassGroupId == classGroup.Id))
+                teacher.ClassGroupId = null;
+
+            await _classStorage.SaveClassesAsync(classes);
+            await _userStorage.SaveAsync(users);
+        }
+
 
 
     }
