@@ -8,112 +8,81 @@
 
 
 
-
-
     <ShellContent
         Route="LoginView"
         ContentTemplate="{DataTemplate View:LoginView}" />
 
-      
-
-
-
-
     <TabBar Route="StudentSection">
         <ShellContent
          Title="Dashboard"
-         Icon="home.png"
          ContentTemplate="{DataTemplate View:StudentDashboardView}"
          Route="StudentDashboardView" />
 
         <ShellContent
-         Title="Schema"
-         Icon="calendar.png"
-         ContentTemplate="{DataTemplate View:StudentScheduleView}"
-         Route="StudentScheduleView" />
+            Title="Schema"
+            ContentTemplate="{DataTemplate View:StudentScheduleView}"
+            Route="StudentScheduleView" />
 
         <ShellContent
-         Title="Frånvaro"
-
-         ContentTemplate="{DataTemplate View:StudentAbsenceView}"
-         Route="StudentAbsenceView" />
-
+            Title="Frånvaro"
+            ContentTemplate="{DataTemplate View:StudentAbsenceView}"
+            Route="StudentAbsenceView" />
 
         <ShellContent
-             Title="Meddelanden"
-             ContentTemplate="{DataTemplate View:StudentMessagesView}"
-             Route="StudentMessagesView" />
+            Title="Meddelanden"
+            ContentTemplate="{DataTemplate View:StudentMessagesView}"
+            Route="StudentMessagesView" />
     </TabBar>
-
 
 
     <TabBar Route="TeacherSection">
         <ShellContent
-        Title="Dashboard"
-        Icon="teacher.png"
-        ContentTemplate="{DataTemplate View:TeacherDashboardView}"
-        Route="TeacherDashboardView" />
+            Title="Dashboard"
+            ContentTemplate="{DataTemplate View:TeacherDashboardView}"
+            Route="TeacherDashboardView" />
 
         <ShellContent
-        Title="Klasser"
-        Icon="class.png"
-        ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
-        Route="ClassManagementTeacherView" />
+            Title="Klasser"
+            ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
+            Route="ClassManagementTeacherView" />
 
         <ShellContent
-        Title="Schema"
-        Icon="edit.png"
-        ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
-        Route="ScheduleEditorTeacherView" />
+            Title="Schema"
+            ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
+            Route="ScheduleEditorTeacherView" />
+
+        <ShellContent
+            Title="Meddelanden"
+            ContentTemplate="{DataTemplate View:TeacherMessageView}"
+            Route="TeacherMessageView" />
     </TabBar>
-
-
-    
-
-
-
-
-
 
     <TabBar Route="AdminSection">
         <ShellContent
             Title="Dashboard"
-   
             ContentTemplate="{DataTemplate View:AdminView}"
             Route="AdminView" />
 
         <ShellContent
-                Title="Schemaeditor"
-   
-                ContentTemplate="{DataTemplate View:AdminScheduleEditorView}"
-                Route="AdminScheduleEditorView" />
+            Title="Schemaeditor"
+            ContentTemplate="{DataTemplate View:AdminScheduleEditorView}"
+            Route="AdminScheduleEditorView" />
 
         <ShellContent
             Title="Message"
-   
             ContentTemplate="{DataTemplate View:AdminMessageView}"
             Route="AdminMessageView" />
 
-        <ShellContent Title ="klass hantering" ContentTemplate="{DataTemplate View:AdminClassView}" Route="AdminClassView" />
+        <ShellContent 
+            Title ="Class Management" 
+            ContentTemplate="{DataTemplate View:AdminClassView}" 
+            Route="AdminClassView" />
 
         <ShellContent
-            Title ="lägg till och ta bort users" 
+            Title ="Add Users" 
             ContentTemplate="{DataTemplate View:AdminAddTeachersAndStudents}" 
             Route="AdminAddTeachersAndStudents" />
 
     </TabBar>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </Shell>

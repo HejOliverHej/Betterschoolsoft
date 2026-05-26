@@ -3,14 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="betterschoolsoft.View.StudentMessagesView"
              Title="StudentMessagesView">
-    <VerticalStackLayout Padding="20">
 
-        <Label Text="Nyhets lista"
-           FontSize="24"
-           FontAttributes="Bold"
-           HorizontalOptions="Center" />
 
-        
+    <ContentPage.Content>
 
-    </VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Messages}"
+                        Margin="10">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame Padding="15"
+                           Margin="0,5"
+                           BorderColor="#cccccc"
+                           CornerRadius="10"
+                           HasShadow="True">
+
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label Text="{Binding Title}"
+                                   FontAttributes="Bold"
+                                   FontSize="18" />
+
+                           
+                            <Label Text="{Binding Body}"
+                                   FontSize="14"
+                                   TextColor="White" />
+
+                            <Label Text="{Binding SentAt, StringFormat='Skickat: {0:yyyy-MM-dd HH:mm}'}"
+                                   FontSize="12"
+                                   TextColor="Gray" />
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </ContentPage.Content>
+
+
 </ContentPage>
