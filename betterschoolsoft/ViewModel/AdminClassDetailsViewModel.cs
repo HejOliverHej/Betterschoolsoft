@@ -1,5 +1,6 @@
 ﻿using betterschoolsoft.Model;
 using betterschoolsoft.Service;
+using betterschoolsoft.View;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +21,18 @@ namespace betterschoolsoft.ViewModel
         public ICommand RemoveStudentCommand { get; }
         public ICommand RemoveTeacherCommand { get; }
 
+        public ObservableCollection<Teachers> AvailableMentors { get; set; }
+
+        private Teachers _selectedMentor;
+        public Teachers SelectedMentor
+        {
+            get => _selectedMentor;
+            set
+            {
+                _selectedMentor = value;
+                OnPropertyChanged(nameof(SelectedMentor));
+            }
+        }
 
         private Students _selectedStudentToAdd;
         public Students SelectedStudentToAdd
@@ -46,6 +59,9 @@ namespace betterschoolsoft.ViewModel
         public ICommand AddStudentCommand { get; }
         public ICommand AddTeacherCommand { get; }
 
+        public ICommand SaveChangesCommand { get; }
+
+
         public AdminClassDetailsViewModel(ClassGroup classGroup)
         {
             _userStorage = new JsonUserStorageService();
@@ -58,11 +74,17 @@ namespace betterschoolsoft.ViewModel
             Class.Students ??= new ObservableCollection<Students>();
             Class.Teachers ??= new ObservableCollection<Teachers>();
 
+            SaveChangesCommand = new Command(async () => await SaveChanges());
+
+
             RemoveStudentCommand = new Command<Students>(async (s) => await RemoveStudent(s));
             RemoveTeacherCommand = new Command<Teachers>(async (t) => await RemoveTeacher(t));
 
+
             AddStudentCommand = new Command(async () => await AddStudent());
             AddTeacherCommand = new Command(async () => await AddTeacher());
+
+
 
             LoadAvailableUsers();
         }
@@ -83,6 +105,14 @@ namespace betterschoolsoft.ViewModel
                     t.Id != Class.ClassTeacherId &&
                     !Class.Teachers.Any(ct => ct.Id == t.Id)));
             OnPropertyChanged(nameof(AvailableTeachers));
+
+            AvailableMentors = new ObservableCollection<Teachers>(
+    users.OfType<Teachers>()
+         .Where(t => t.Id != Class.ClassTeacherId)); 
+
+            OnPropertyChanged(nameof(AvailableMentors));
+
+
         }
 
         private async Task AddStudent()
@@ -133,6 +163,23 @@ namespace betterschoolsoft.ViewModel
             Class.Teachers.Remove(teacher);
             AvailableTeachers.Add(teacher);
         }
+
+        private async Task SaveChanges()
+        {
+            if (SelectedMentor != null && SelectedMentor.Id != Class.ClassTeacherId)
+            {
+                await _classService.ChangeClassTeacherAsync(Class, SelectedMentor);
+
+                Class.ClassTeacher = SelectedMentor;
+                Class.ClassTeacherId = SelectedMentor.Id;
+            }
+
+
+            await Application.Current.MainPage.DisplayAlert("Sparat", "Ändringarna har sparats.", "OK");
+            await Shell.Current.GoToAsync("//AdminSection/AdminClassView");
+
+        }
+
 
     }
 }

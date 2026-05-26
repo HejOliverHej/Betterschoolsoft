@@ -11,6 +11,17 @@
             <Label Text="Mentor:" FontSize="18" />
             <Label Text="{Binding Class.ClassTeacher.Username}" FontSize="18" />
 
+            <Label Text="Byt mentor:" FontSize="18" />
+
+            <Picker Title="Välj ny mentor"
+                ItemsSource="{Binding AvailableMentors}"
+                ItemDisplayBinding="{Binding Username}"
+                SelectedItem="{Binding SelectedMentor}" />
+
+                    
+
+
+
             <Label Text="Elever:" FontSize="18" />
             <CollectionView ItemsSource="{Binding Class.Students}">
                 <CollectionView.ItemTemplate>
@@ -56,6 +67,10 @@
 
             <Button Text="Lägg till lärare"
                     Command="{Binding AddTeacherCommand}" />
+
+            <Button Text="Spara ändringar"
+                 BackgroundColor="LightGreen"
+               Command="{Binding SaveChangesCommand}" />
 
         </VerticalStackLayout>
     </ScrollView>

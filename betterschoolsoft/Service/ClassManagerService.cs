@@ -133,5 +133,27 @@ namespace betterschoolsoft.Service
             await _userStorage.SaveAsync(users);
         }
 
+        public async Task ChangeClassTeacherAsync(ClassGroup classGroup, Teachers newTeacher)
+        {
+            var classes = await _classStorage.LoadClassesAsync();
+            var users = await _userStorage.LoadAsync();
+
+            var target = classes.FirstOrDefault(c => c.Id == classGroup.Id);
+            if (target == null)
+                return;
+
+            // Uppdatera mentor-ID
+            target.ClassTeacherId = newTeacher.Id;
+
+            // Uppdatera lärarens koppling
+            var teacherInStorage = users.OfType<Teachers>().FirstOrDefault(t => t.Id == newTeacher.Id);
+            if (teacherInStorage != null)
+                teacherInStorage.ClassGroupId = classGroup.Id;
+
+            await _classStorage.SaveClassesAsync(classes);
+            await _userStorage.SaveAsync(users);
+        }
+
+
     }
 }
