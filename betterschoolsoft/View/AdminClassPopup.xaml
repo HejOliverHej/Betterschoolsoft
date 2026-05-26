@@ -24,6 +24,12 @@
                    TextColor="Black"
                    PlaceholderColor="#666666" />
 
+            <Label Text="Välj mentor:" TextColor="Black" />
+            <Picker ItemsSource="{Binding AllTeachers}"
+                ItemDisplayBinding="{Binding Username}"
+                SelectedItem="{Binding SelectedTeacher}" BackgroundColor="Blue" />
+
+
             <Button Text="Skapa"
                     Command="{Binding CreateCommand}"
                     BackgroundColor="#DDDDDD"

@@ -1,165 +1,108 @@
 ﻿using betterschoolsoft.Model;
 using betterschoolsoft.Service;
-using betterschoolsoft.View;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace betterschoolsoft.ViewModel
 {
     public class AdminClassDetailsViewModel : BaseViewModel
     {
-
-        /*
         private readonly ClassManagerService _classService;
         private readonly IUserStorageService _userStorage;
 
-        public ClassGroup Class { get; }
+        public ClassGroup Class { get; set; }
 
-        public string EditableClassName { get; set; }
+        public ObservableCollection<Students> AvailableStudents { get; set; }
+        public ObservableCollection<Teachers> AvailableTeachers { get; set; }
 
-        public ObservableCollection<Students> Students { get; set; }
-        public ObservableCollection<Teachers> Teachers { get; set; }
-        public ObservableCollection<Teachers> AllTeachers { get; set; }
+        private Students _selectedStudentToAdd;
+        public Students SelectedStudentToAdd
+        {
+            get => _selectedStudentToAdd;
+            set
+            {
+                _selectedStudentToAdd = value;
+                OnPropertyChanged(nameof(SelectedStudentToAdd));
+            }
+        }
 
-        public Teachers SelectedClassTeacher { get; set; }
+        private Teachers _selectedTeacherToAdd;
+        public Teachers SelectedTeacherToAdd
+        {
+            get => _selectedTeacherToAdd;
+            set
+            {
+                _selectedTeacherToAdd = value;
+                OnPropertyChanged(nameof(SelectedTeacherToAdd));
+            }
+        }
 
         public ICommand AddStudentCommand { get; }
-        public ICommand RemoveStudentCommand { get; }
         public ICommand AddTeacherCommand { get; }
-        public ICommand RemoveTeacherCommand { get; }
-        public ICommand SaveChangesCommand { get; }
 
         public AdminClassDetailsViewModel(ClassGroup classGroup)
         {
-            Class = classGroup;
-
-            EditableClassName = Class.Name;
-
             _userStorage = new JsonUserStorageService();
             _classService = new ClassManagerService(
-                new JsonUserStorageService(),
+                _userStorage,
                 new JsonClassStorageService());
 
-            Students = new ObservableCollection<Students>(Class.Students);
-            Teachers = new ObservableCollection<Teachers>(Class.Teachers);
+            Class = classGroup;
 
-            LoadAllTeachers();
+            Class.Students ??= new ObservableCollection<Students>();
+            Class.Teachers ??= new ObservableCollection<Teachers>();
 
-            SelectedClassTeacher = Class.ClassTeacher;
+            AddStudentCommand = new Command(async () => await AddStudent());
+            AddTeacherCommand = new Command(async () => await AddTeacher());
 
-            AddStudentCommand = new Command(async () => await OpenAddStudentPopup());
-            RemoveStudentCommand = new Command<Students>(async s => await RemoveStudent(s));
-            AddTeacherCommand = new Command(async () => await OpenAddTeacherPopup());
-            RemoveTeacherCommand = new Command<Teachers>(async t => await RemoveTeacher(t));
-            SaveChangesCommand = new Command(async () => await SaveChanges());
+            LoadAvailableUsers();
         }
 
-        private async void LoadAllTeachers()
+        private async void LoadAvailableUsers()
         {
             var users = await _userStorage.LoadAsync();
-            AllTeachers = new ObservableCollection<Teachers>(users.OfType<Teachers>());
+
+            var allStudents = users.OfType<Students>().ToList();
+            var allTeachers = users.OfType<Teachers>().ToList();
+
+            AvailableStudents = new ObservableCollection<Students>(
+                allStudents.Where(s => s.ClassGroupId == null));
+            OnPropertyChanged(nameof(AvailableStudents));
+
+            AvailableTeachers = new ObservableCollection<Teachers>(
+                allTeachers.Where(t =>
+                    t.Id != Class.ClassTeacherId &&
+                    !Class.Teachers.Any(ct => ct.Id == t.Id)));
+            OnPropertyChanged(nameof(AvailableTeachers));
         }
 
-        // -----------------------------
-        // ADD STUDENT POPUP
-        // -----------------------------
-        private async Task OpenAddStudentPopup()
+        private async Task AddStudent()
         {
-            var popup = new AddStudentPopup();
-            var vm = new AddStudentPopupViewModel(Class);
+            if (SelectedStudentToAdd == null)
+                return;
 
-            popup.BindingContext = vm;
+            await _classService.AddStudentToClassAsync(SelectedStudentToAdd, Class);
 
-            vm.CloseRequested += () =>
-            {
-                Application.Current.MainPage.Navigation.PopModalAsync();
-                RefreshStudents();
-            };
+            SelectedStudentToAdd.ClassGroupId = Class.Id;
+            Class.Students.Add(SelectedStudentToAdd);
+            AvailableStudents.Remove(SelectedStudentToAdd);
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(popup);
+            SelectedStudentToAdd = null;
         }
 
-        private void RefreshStudents()
+        private async Task AddTeacher()
         {
-            Students = new ObservableCollection<Students>(Class.Students);
-            OnPropertyChanged(nameof(Students));
+            if (SelectedTeacherToAdd == null)
+                return;
+
+            await _classService.AddTeacherToClassAsync(SelectedTeacherToAdd, Class);
+
+            Class.Teachers.Add(SelectedTeacherToAdd);
+            AvailableTeachers.Remove(SelectedTeacherToAdd);
+
+            SelectedTeacherToAdd = null;
         }
-
-        private async Task RemoveStudent(Students student)
-        {
-            bool confirm = await Application.Current.MainPage.DisplayAlert(
-                "Ta bort elev",
-                $"Vill du ta bort {student.Username} från klassen?",
-                "Ja", "Nej");
-
-            if (!confirm) return;
-
-            Class.Students.Remove(student);
-            student.ClassGroup = null;
-
-            RefreshStudents();
-        }
-
-        // -----------------------------
-        // ADD TEACHER POPUP
-        // -----------------------------
-        private async Task OpenAddTeacherPopup()
-        {
-            var popup = new AddTeacherPopup();
-            var vm = new AddTeacherPopupViewModel(Class);
-
-            popup.BindingContext = vm;
-
-            vm.CloseRequested += () =>
-            {
-                Application.Current.MainPage.Navigation.PopModalAsync();
-                RefreshTeachers();
-            };
-
-            await Application.Current.MainPage.Navigation.PushModalAsync(popup);
-        }
-
-        private void RefreshTeachers()
-        {
-            Teachers = new ObservableCollection<Teachers>(Class.Teachers);
-            OnPropertyChanged(nameof(Teachers));
-        }
-
-        private async Task RemoveTeacher(Teachers teacher)
-        {
-            bool confirm = await Application.Current.MainPage.DisplayAlert(
-                "Ta bort lärare",
-                $"Vill du ta bort {teacher.Username} från klassen?",
-                "Ja", "Nej");
-
-            if (!confirm) return;
-
-            Class.Teachers.Remove(teacher);
-            RefreshTeachers();
-        }
-
-        // -----------------------------
-        // SAVE CHANGES
-        // -----------------------------
-        private async Task SaveChanges()
-        {
-            Class.Name = EditableClassName;
-            Class.ClassTeacher = SelectedClassTeacher;
-            Class.Students = Students.ToList();
-            Class.Teachers = Teachers.ToList();
-
-            var classes = await _classService.GetAllClassesAsync();
-            var target = classes.First(c => c.Id == Class.Id);
-
-            target.Name = Class.Name;
-            target.ClassTeacher = Class.ClassTeacher;
-            target.Students = Class.Students;
-            target.Teachers = Class.Teachers;
-
-            await _classService.SaveClassesAsync(classes);
-
-            await Application.Current.MainPage.DisplayAlert("Sparat", "Ändringar sparade!", "OK");
-        }
-        */
     }
 }

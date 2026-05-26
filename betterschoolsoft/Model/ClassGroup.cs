@@ -1,30 +1,40 @@
-﻿using System;
+﻿using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 
 namespace betterschoolsoft.Model
 {
+
     public class ClassGroup
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public string Name { get; set; }
+        
+            public Guid Id { get; set; }
+            public string Name { get; set; }
 
-        [JsonIgnore]
-        public Teachers ClassTeacher { get; set; }
+            public Guid ClassTeacherId { get; set; }
 
-        [JsonIgnore]
-        public List<Students> Students { get; set; } = new();
+            public List<Guid> StudentIds { get; set; } = new();
+            public List<Guid> TeacherIds { get; set; } = new();
 
-        [JsonIgnore]
-        public List<Teachers> Teachers { get; set; } = new();
+            [JsonIgnore]
+            public ObservableCollection<Students> Students { get; set; } = new();
+
+            [JsonIgnore]
+            public ObservableCollection<Teachers> Teachers { get; set; } = new();
+
+            [JsonIgnore]
+            public Teachers ClassTeacher { get; set; }
+        
+
 
         [JsonConstructor]
-        public ClassGroup(Guid id, string name)
+        public ClassGroup(Guid id, string name, Guid classTeacherId)
         {
             Id = id;
             Name = name;
-            Students = new List<Students>();
-            Teachers = new List<Teachers>();
+            ClassTeacherId = classTeacherId;
         }
 
         public ClassGroup(string name, Teachers classTeacher)
@@ -32,8 +42,9 @@ namespace betterschoolsoft.Model
             Id = Guid.NewGuid();
             Name = name;
             ClassTeacher = classTeacher;
-            Students = new List<Students>();
-            Teachers = new List<Teachers>() { classTeacher };
+            ClassTeacherId = classTeacher.Id;
         }
     }
+
+
 }

@@ -47,8 +47,8 @@ namespace betterschoolsoft.ViewModel
                     newStudent.ClassGroup = _class;
                     _class.Students.Add(newStudent);
 
-                    var classes = await _classService.GetAllClassesAsync();
-                    await _classService.SaveClassesAsync(classes);
+                    await _classService.AddStudentToClassAsync(newStudent, _class);
+
                 }
 
                 users.Add(newStudent);

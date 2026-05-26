@@ -1,85 +1,50 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="betterschoolsoft.View.AdminClassDetailsView"
-             xmlns:vm="clr-namespace:betterschoolsoft.ViewModel"
-             Title="Klassdetaljer">
+             x:Class="betterschoolsoft.View.AdminClassDetailsView">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="25">
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-            <Frame Padding="15" BorderColor="LightGray" CornerRadius="10">
-                <VerticalStackLayout Spacing="10">
+            <Label Text="{Binding Class.Name}" FontSize="28" />
 
-                    <Label Text="Klassinformation" FontSize="22" FontAttributes="Bold" />
+            <Label Text="Mentor:" FontSize="18" />
+            <Label Text="{Binding Class.ClassTeacher.Username}" FontSize="18" />
 
-                    <Label Text="Klassnamn:" FontSize="14" />
-                    <Entry Text="{Binding EditableClassName}" FontSize="18" />
+            <Label Text="Elever:" FontSize="18" />
+            <CollectionView ItemsSource="{Binding Class.Students}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Username}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                    <Label Text="Klasslärare (mentor):" FontSize="14" />
-                    <Picker ItemsSource="{Binding AllTeachers}"
-                            ItemDisplayBinding="{Binding Username}"
-                            SelectedItem="{Binding SelectedClassTeacher}" />
+            <Picker Title="Lägg till elev"
+                    ItemsSource="{Binding AvailableStudents}"
+                    ItemDisplayBinding="{Binding Username}"
+                    SelectedItem="{Binding SelectedStudentToAdd}" />
 
-                </VerticalStackLayout>
-            </Frame>
+            <Button Text="Lägg till elev"
+                    Command="{Binding AddStudentCommand}" />
 
-            <Frame Padding="15" BorderColor="LightGray" CornerRadius="10">
-                <VerticalStackLayout Spacing="10">
+            <Label Text="Lärare:" FontSize="18" />
+            <CollectionView ItemsSource="{Binding Class.Teachers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Username}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                    <Label Text="Elever" FontSize="22" FontAttributes="Bold" />
+            <Picker Title="Lägg till lärare"
+                    ItemsSource="{Binding AvailableTeachers}"
+                    ItemDisplayBinding="{Binding Username}"
+                    SelectedItem="{Binding SelectedTeacherToAdd}" />
 
-                    <CollectionView ItemsSource="{Binding Students}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="{Binding Username}" FontSize="16" />
-                                    <Button Text="Ta bort"
-                                            FontSize="12"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminClassDetailsViewModel}}, Path=RemoveStudentCommand}"
-                                            CommandParameter="{Binding .}" />
-                                </HorizontalStackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-                    <Button Text="Lägg till elev"
-                            Command="{Binding AddStudentCommand}" />
-
-                </VerticalStackLayout>
-            </Frame>
-
-            <!-- Lärare -->
-            <Frame Padding="15" BorderColor="LightGray" CornerRadius="10">
-                <VerticalStackLayout Spacing="10">
-
-                    <Label Text="Lärare" FontSize="22" FontAttributes="Bold" />
-
-                    <CollectionView ItemsSource="{Binding Teachers}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="{Binding Username}" FontSize="16" />
-                                    <Button Text="Ta bort"
-                                            FontSize="12"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminClassDetailsViewModel}}, Path=RemoveTeacherCommand}"
-                                            CommandParameter="{Binding .}" />
-                                </HorizontalStackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-                    <Button Text="Lägg till lärare"
-                            Command="{Binding AddTeacherCommand}" />
-
-                </VerticalStackLayout>
-            </Frame>
-
-            <Button Text="Spara ändringar"
-                    BackgroundColor="#4CAF50"
-                    TextColor="White"
-                    Command="{Binding SaveChangesCommand}" />
+            <Button Text="Lägg till lärare"
+                    Command="{Binding AddTeacherCommand}" />
 
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

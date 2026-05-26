@@ -59,20 +59,28 @@ namespace betterschoolsoft.ViewModel
             vm.CloseRequested += () =>
             {
                 Application.Current.MainPage.Navigation.PopModalAsync();
-                LoadClasses(); 
+                LoadClasses();
             };
 
             await Application.Current.MainPage.Navigation.PushModalAsync(popup);
         }
 
+
         private async Task OpenClassDetails(ClassGroup classGroup)
         {
-            var page = new AdminClassDetailsView();
-            var vm = new AdminClassDetailsViewModel();
-
-            page.BindingContext = vm;
+            var vm = new AdminClassDetailsViewModel(classGroup);
+            var page = new AdminClassDetailsView { BindingContext = vm };
 
             await Application.Current.MainPage.Navigation.PushAsync(page);
+
+
+
         }
+        public void ReloadClasses()
+        {
+            LoadClasses();
+        }
+
+
     }
 }

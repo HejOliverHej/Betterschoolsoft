@@ -8,6 +8,9 @@ namespace betterschoolsoft.Model
     {
         private List<Subject> subjects;
 
+        public Guid? ClassGroupId { get; set; }   // <-- LÄGG TILL DENNA
+
+
         [JsonConstructor]
         public Teachers(
             Guid id,

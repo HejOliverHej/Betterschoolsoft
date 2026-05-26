@@ -32,9 +32,10 @@ namespace betterschoolsoft.Service
                                     UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToBaseType,
                                     DerivedTypes =
                                     {
-                                        new JsonDerivedType(typeof(Students), "student"),
-                                        new JsonDerivedType(typeof(Teachers), "teacher"),
-                                        new JsonDerivedType(typeof(Admin), "admin")
+                                        new JsonDerivedType(typeof(Students), "betterschoolsoft.Model.Students, betterschoolsoft"),
+                                        new JsonDerivedType(typeof(Teachers), "betterschoolsoft.Model.Teachers, betterschoolsoft"),
+                                        new JsonDerivedType(typeof(Admin), "betterschoolsoft.Model.Admin, betterschoolsoft")
+
 
                                     }
                                 };

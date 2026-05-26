@@ -10,4 +10,11 @@ public partial class AdminClassView : ContentPage
         BindingContext = new AdminClassViewModel();
 
     }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is AdminClassViewModel vm)
+            vm.ReloadClasses();
+    }
 }

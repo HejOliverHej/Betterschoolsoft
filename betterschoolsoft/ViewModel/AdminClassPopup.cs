@@ -13,6 +13,10 @@ namespace betterschoolsoft.ViewModel
 
         public string ClassName { get; set; }
 
+        public ObservableCollection<Teachers> AllTeachers { get; set; }
+        public Teachers SelectedTeacher { get; set; }
+
+
         public ICommand CreateCommand { get; }
         public ICommand CancelCommand { get; }
 
@@ -24,9 +28,19 @@ namespace betterschoolsoft.ViewModel
                 new JsonUserStorageService(),
                 new JsonClassStorageService());
 
+
+            LoadTeachers();
             CreateCommand = new Command(async () => await CreateClass());
             CancelCommand = new Command(() => CloseRequested?.Invoke());
         }
+
+        private async void LoadTeachers()
+        {
+            var users = await new JsonUserStorageService().LoadAsync();
+            AllTeachers = new ObservableCollection<Teachers>(users.OfType<Teachers>());
+            OnPropertyChanged(nameof(AllTeachers));
+        }
+
 
         private async Task CreateClass()
         {
@@ -36,10 +50,23 @@ namespace betterschoolsoft.ViewModel
                 return;
             }
 
-            // Skapa klass utan lärare
-            await _classService.CreateClassAsync(ClassName, null);
+            if (SelectedTeacher == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Fel", "Välj en mentor för klassen.", "OK");
+                return;
+            }
 
-            CloseRequested?.Invoke();
+            try
+            {
+                await _classService.CreateClassAsync(ClassName, SelectedTeacher);
+                CloseRequested?.Invoke();
+            }
+            catch (ArgumentException ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Fel", ex.Message, "OK");
+            }
         }
+
+
     }
 }
