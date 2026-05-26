@@ -17,6 +17,10 @@ namespace betterschoolsoft.ViewModel
         public ObservableCollection<Students> AvailableStudents { get; set; }
         public ObservableCollection<Teachers> AvailableTeachers { get; set; }
 
+        public ICommand RemoveStudentCommand { get; }
+        public ICommand RemoveTeacherCommand { get; }
+
+
         private Students _selectedStudentToAdd;
         public Students SelectedStudentToAdd
         {
@@ -53,6 +57,9 @@ namespace betterschoolsoft.ViewModel
 
             Class.Students ??= new ObservableCollection<Students>();
             Class.Teachers ??= new ObservableCollection<Teachers>();
+
+            RemoveStudentCommand = new Command<Students>(async (s) => await RemoveStudent(s));
+            RemoveTeacherCommand = new Command<Teachers>(async (t) => await RemoveTeacher(t));
 
             AddStudentCommand = new Command(async () => await AddStudent());
             AddTeacherCommand = new Command(async () => await AddTeacher());
@@ -104,5 +111,28 @@ namespace betterschoolsoft.ViewModel
 
             SelectedTeacherToAdd = null;
         }
+
+        private async Task RemoveStudent(Students student)
+        {
+            if (student == null)
+                return;
+
+            await _classService.RemoveStudentFromClassAsync(student, Class);
+
+            Class.Students.Remove(student);
+            AvailableStudents.Add(student);
+        }
+
+        private async Task RemoveTeacher(Teachers teacher)
+        {
+            if (teacher == null)
+                return;
+
+            await _classService.RemoveTeacherFromClassAsync(teacher, Class);
+
+            Class.Teachers.Remove(teacher);
+            AvailableTeachers.Add(teacher);
+        }
+
     }
 }

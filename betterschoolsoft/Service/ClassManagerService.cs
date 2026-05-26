@@ -89,5 +89,49 @@ namespace betterschoolsoft.Service
             await _classStorage.SaveClassesAsync(classes);
             await _userStorage.SaveAsync(users);
         }
+
+
+        public async Task RemoveStudentFromClassAsync(Students student, ClassGroup classGroup)
+        {
+            var classes = await _classStorage.LoadClassesAsync();
+            var users = await _userStorage.LoadAsync();
+
+            var target = classes.FirstOrDefault(c => c.Id == classGroup.Id);
+            if (target == null)
+                return;
+
+            // Ta bort ID från klassen
+            target.StudentIds.Remove(student.Id);
+
+            // Nollställ elevens koppling
+            var studentInStorage = users.OfType<Students>().FirstOrDefault(s => s.Id == student.Id);
+            if (studentInStorage != null)
+                studentInStorage.ClassGroupId = null;
+
+            await _classStorage.SaveClassesAsync(classes);
+            await _userStorage.SaveAsync(users);
+        }
+
+        public async Task RemoveTeacherFromClassAsync(Teachers teacher, ClassGroup classGroup)
+        {
+            var classes = await _classStorage.LoadClassesAsync();
+            var users = await _userStorage.LoadAsync();
+
+            var target = classes.FirstOrDefault(c => c.Id == classGroup.Id);
+            if (target == null)
+                return;
+
+            // Ta bort ID från klassen
+            target.TeacherIds.Remove(teacher.Id);
+
+            // Nollställ lärarens koppling
+            var teacherInStorage = users.OfType<Teachers>().FirstOrDefault(t => t.Id == teacher.Id);
+            if (teacherInStorage != null)
+                teacherInStorage.ClassGroupId = null;
+
+            await _classStorage.SaveClassesAsync(classes);
+            await _userStorage.SaveAsync(users);
+        }
+
     }
 }

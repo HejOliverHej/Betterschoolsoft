@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("betterschoolsoft")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+86922ec91fe11a8eb2f75ca109ca71481c67b5a3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+89f5f9b6b5104aff588694d2a71af84e2f12b8dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("betterschoolsoft")]
 [assembly: System.Reflection.AssemblyTitleAttribute("betterschoolsoft")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
