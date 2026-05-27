@@ -18,12 +18,21 @@ namespace betterschoolsoft.ViewModel
         public ICommand OpenAbsenceCommand { get; }
         public ICommand OpenMessagesCommand { get; }
 
+        public ICommand LogoutCommand { get; }
+
+
+
         public StudentDashboardViewModel()
         {
-            
+            LogoutCommand = new Command(async () => await Logout());
 
-            
 
+
+        }
+
+        private async Task Logout()
+        {
+            await Shell.Current.GoToAsync("//LoginView");
         }
 
     }

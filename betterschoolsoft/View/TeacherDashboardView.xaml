@@ -46,6 +46,10 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+            <Button Text="Logga ut"
+BackgroundColor="Red"
+Command="{Binding LogoutCommand}" />
+
         </VerticalStackLayout>
     </ScrollView>
 

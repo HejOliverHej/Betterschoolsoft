@@ -14,15 +14,21 @@ namespace betterschoolsoft.ViewModel
 
             public ObservableCollection<Lesson> TodayLessons { get; set; }
 
-           
+        public ICommand LogoutCommand { get; }
 
-            public TeacherDashboardViewModel()
+
+
+        public TeacherDashboardViewModel()
             {
-                
+            LogoutCommand = new Command(async () => await Logout());
 
 
-            }
-        
+        }
+        private async Task Logout()
+        {
+            await Shell.Current.GoToAsync("//LoginView");
+        }
+
     }
         
 }

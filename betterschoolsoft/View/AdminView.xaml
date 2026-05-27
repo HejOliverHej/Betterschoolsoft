@@ -8,5 +8,10 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Button Text="Logga ut"
+        BackgroundColor="Red"
+        Command="{Binding LogoutCommand}" />
+
     </VerticalStackLayout>
 </ContentPage>
