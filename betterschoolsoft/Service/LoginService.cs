@@ -10,6 +10,11 @@ public class LoginService
         _storage = storage;
     }
 
+
+    /// <summary>
+    /// loginasync som även har hårdkodat in det ända admin konton viste inte bågpt annat sätt att göra det på.
+    /// </summary>
+    
     public async Task<Users> LoginAsync(string username, string password)
     {
         if (username == "admin" && password == "admin123")

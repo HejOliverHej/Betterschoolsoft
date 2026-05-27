@@ -10,7 +10,7 @@ namespace betterschoolsoft.ViewModel
     internal class TeacherDashboardViewModel : BaseViewModel
     {
         
-            public string TeacherName { get; set; } = "Lärare Testsson";
+            public string TeacherName { get; set; } = "Lärare Test";
 
             public ObservableCollection<Lesson> TodayLessons { get; set; }
 

@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace betterschoolsoft.Service
 {
+
+    /// <summary>
+    /// Om jag bara sammafattar hela denna fill så är det all logik bakom 
+    /// sparningen av klassen ClassGroup jag tycker att alla methoder är ganska själv sägande.
+    /// Till sist har jag valt att anvädna mig av tre filler istället för två när det kommer 
+    /// till sparningen av typ allt och det är för att jag separerar logiken bakom sparningen och själva sparandet för att lättare läsa koden.
+    /// </summary>
     public class ClassManagerService
     {
         private readonly IUserStorageService _userStorage;
@@ -18,6 +25,11 @@ namespace betterschoolsoft.Service
             _classStorage = classStorage;
         }
 
+
+        /// <summary>
+        /// häntar alla nuvarande skol klasser fårn storage. kör när adminsction öppnar adminclassview
+        /// </summary>
+        /// <returns>Skol klasser</returns>
         public async Task<List<ClassGroup>> GetAllClassesAsync()
         {
             var classes = await _classStorage.LoadClassesAsync();
@@ -40,6 +52,8 @@ namespace betterschoolsoft.Service
             return classes;
         }
 
+
+ 
         public async Task CreateClassAsync(string name, Teachers classTeacher)
         {
             var classes = await _classStorage.LoadClassesAsync();

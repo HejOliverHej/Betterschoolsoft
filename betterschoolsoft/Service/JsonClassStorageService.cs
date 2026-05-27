@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace betterschoolsoft.Service
 {
+
+    /// <summary>
+    /// spara klasser det vet ingne utan bara sparar.
+    /// </summary>
     public class JsonClassStorageService : IClassStorageService
     {
         private readonly string _filePath = Path.Combine(

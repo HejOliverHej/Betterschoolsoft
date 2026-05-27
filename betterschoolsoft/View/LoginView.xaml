@@ -32,13 +32,7 @@
                     FontSize="18"
                     HeightRequest="50" />
 
-            <Button Text="inget konto gör ett här"
-                Command="{Binding GoToSignupCommand}"
-                BackgroundColor="#4A90E2"
-                TextColor="White"
-                CornerRadius="8"
-                FontSize="18"
-                HeightRequest="50" />
+            
 
         </VerticalStackLayout>
     </ScrollView>

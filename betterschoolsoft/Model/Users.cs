@@ -25,6 +25,11 @@ namespace betterschoolsoft.Model
             Password = password;
         }
 
+
+        /// <summary>
+        /// jag ser nu att jag inte använder mig av denna vaildering för att jag andlig skapar ett object men
+        /// hjälpa av inlogningen så jag kan inte använda mig av try ctachs.
+        /// </summary>
         public string Username
         {
             get => username;

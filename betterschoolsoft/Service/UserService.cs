@@ -10,6 +10,10 @@ namespace betterschoolsoft.Service
         private readonly string filePath;
         private readonly JsonSerializerOptions _options;
 
+
+        /// <summary>
+        /// konstruktorn som gör några sakre och även som även andvänder sig av TypeInfoResolver för att angöra vilken typ av användare det är.
+        /// </summary>
         public JsonUserStorageService()
         {
             filePath = Path.Combine(FileSystem.AppDataDirectory, "users.json");

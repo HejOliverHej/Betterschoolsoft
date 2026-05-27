@@ -32,7 +32,6 @@ namespace betterschoolsoft.ViewModel
         }
 
         public ICommand LoginCommand { get; }
-        public ICommand GoToSignupCommand { get; }
 
         public LoginViewModel()
         {
@@ -40,10 +39,7 @@ namespace betterschoolsoft.ViewModel
             _loginService = new LoginService(new JsonUserStorageService());
 
             LoginCommand = new Command(async () => await Login());
-            GoToSignupCommand = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync("//SigninView");
-            });
+            
         }
 
         private async Task Login()
@@ -66,7 +62,8 @@ namespace betterschoolsoft.ViewModel
 
             await Shell.Current.GoToAsync(user.GetDashboardRoute());
 
-          
+            Password = "";
+            Username = "";
         }
     }
 }

@@ -5,6 +5,9 @@ using betterschoolsoft.Model;
 
 namespace betterschoolsoft.Service
 {
+    /// <summary>
+    /// Enkla logik i methoder för att sicka medelanden men hjälp writealltext sparning. 
+    /// </summary>
     public class MessageService
     {
         private readonly IMessageStorageService _storage;
