@@ -137,31 +137,11 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminScheduleEditorView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminScheduleEditorView.xaml
-build_metadata.AdditionalFiles.TargetPath = View\AdminScheduleEditorView.xaml
-build_metadata.AdditionalFiles.RelativePath = View\AdminScheduleEditorView.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
 [C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/AdminView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.AdminView.xaml
 build_metadata.AdditionalFiles.TargetPath = View\AdminView.xaml
 build_metadata.AdditionalFiles.RelativePath = View\AdminView.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/ClassManagementTeacherView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.ClassManagementTeacherView.xaml
-build_metadata.AdditionalFiles.TargetPath = View\ClassManagementTeacherView.xaml
-build_metadata.AdditionalFiles.RelativePath = View\ClassManagementTeacherView.xaml
 build_metadata.AdditionalFiles.Inflator = SourceGen
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 
@@ -177,26 +157,6 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/ScheduleEditorTeacherView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.ScheduleEditorTeacherView.xaml
-build_metadata.AdditionalFiles.TargetPath = View\ScheduleEditorTeacherView.xaml
-build_metadata.AdditionalFiles.RelativePath = View\ScheduleEditorTeacherView.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentAbsenceView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentAbsenceView.xaml
-build_metadata.AdditionalFiles.TargetPath = View\StudentAbsenceView.xaml
-build_metadata.AdditionalFiles.RelativePath = View\StudentAbsenceView.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
 [C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentDashboardView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentDashboardView.xaml
@@ -207,31 +167,11 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentManagementTeacherView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentManagementTeacherView.xaml
-build_metadata.AdditionalFiles.TargetPath = View\StudentManagementTeacherView.xaml
-build_metadata.AdditionalFiles.RelativePath = View\StudentManagementTeacherView.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
 [C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentMessagesView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentMessagesView.xaml
 build_metadata.AdditionalFiles.TargetPath = View\StudentMessagesView.xaml
 build_metadata.AdditionalFiles.RelativePath = View\StudentMessagesView.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[C:/Users/oliver.bafverholm/source/repos/betterschoolsoft/betterschoolsoft/View/StudentScheduleView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = betterschoolsoft.View.StudentScheduleView.xaml
-build_metadata.AdditionalFiles.TargetPath = View\StudentScheduleView.xaml
-build_metadata.AdditionalFiles.RelativePath = View\StudentScheduleView.xaml
 build_metadata.AdditionalFiles.Inflator = SourceGen
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 

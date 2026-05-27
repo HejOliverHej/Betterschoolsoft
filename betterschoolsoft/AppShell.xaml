@@ -19,16 +19,6 @@
          Route="StudentDashboardView" />
 
         <ShellContent
-            Title="Schema"
-            ContentTemplate="{DataTemplate View:StudentScheduleView}"
-            Route="StudentScheduleView" />
-
-        <ShellContent
-            Title="Frånvaro"
-            ContentTemplate="{DataTemplate View:StudentAbsenceView}"
-            Route="StudentAbsenceView" />
-
-        <ShellContent
             Title="Meddelanden"
             ContentTemplate="{DataTemplate View:StudentMessagesView}"
             Route="StudentMessagesView" />
@@ -41,16 +31,11 @@
             ContentTemplate="{DataTemplate View:TeacherDashboardView}"
             Route="TeacherDashboardView" />
 
-        <ShellContent
+ <!--       <ShellContent
             Title="Klasser"
             ContentTemplate="{DataTemplate View:ClassManagementTeacherView}"
             Route="ClassManagementTeacherView" />
-
-        <ShellContent
-            Title="Schema"
-            ContentTemplate="{DataTemplate View:ScheduleEditorTeacherView}"
-            Route="ScheduleEditorTeacherView" />
-
+-->
         <ShellContent
             Title="Meddelanden"
             ContentTemplate="{DataTemplate View:TeacherMessageView}"
@@ -62,11 +47,6 @@
             Title="Dashboard"
             ContentTemplate="{DataTemplate View:AdminView}"
             Route="AdminView" />
-
-        <ShellContent
-            Title="Schemaeditor"
-            ContentTemplate="{DataTemplate View:AdminScheduleEditorView}"
-            Route="AdminScheduleEditorView" />
 
         <ShellContent
             Title="Message"
