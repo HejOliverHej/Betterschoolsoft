@@ -66,10 +66,6 @@ namespace betterschoolsoft.ViewModel
 
             await Shell.Current.GoToAsync(user.GetDashboardRoute());
 
-
-
-
-
           
         }
     }
